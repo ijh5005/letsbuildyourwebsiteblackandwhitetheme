@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="lets build your website">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Isaiah Harrison">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+    <link rel="stylesheet" href="./css/library.css">
+    <link rel="stylesheet" href="./css/master.css">
+    <link rel="stylesheet" href="./css/animation.css">
+    <link rel="stylesheet" href="./css/animationBox.css">
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Jaldi:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Mitr:200,300,400,500,600,700" rel="stylesheet">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+  </head>
+  <body ng-app='app' ng-controller='ctrl' ng-cloak>
+
+    <div id="container" class="flexRow">
+
+      <div id="content" class="fullSize">
+
+        <!-- home page -->
+        <div id="homePageLocation" class=""></div>
+        <div id="homePage" class="fullHeightWebPage fullWidth flexCol">
+          <div id="computerBox" class="fullHeight w50">
+
+            <div id="screenContainer" class="">
+              <div id="screen" class="fullHeight fullWidth phoneScreen">
+                <div id="bottomScreen" class="fullHeight fullWidth flexCol">
+                  <div id="urlBar" class="flexRow h10 w90">
+                    <div id="urlCircle"></div>
+                    <p id="urlText" class="hideElement">yourwebsite.com</p>
+                  </div>
+                  <div id="screenInside" class="h80 w90 hideElement">
+                    <div id="screenInsideTop" class="h50 fullWidth">
+                      <div id="screenInsideTopTop" class="h25 fullWidth flexRow">
+                        <div id="screenMenu" class="">
+                          <i class="fas fa-bars"></i>
+                        </div>
+                        <div id="screenSignIn" class="flexRow">
+                          <div class="">
+                            <p>sign up</p>
+                          </div>
+                          <div class="">
+                            <p>sign in</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="screenInsideTopBottom" class="h75 fullWidth flexRow">
+                        <p><span data='0'>I</span><span data='1'>N</span><span data='2'>N</span><span data='3'>O</span><span data='4'>V</span><span data='5'>A</span><span data='6'>T</span><span data='7'>E</span></p>
+                      </div>
+                    </div>
+                    <div id="screenInsideBottom" class="h50 fullWidth flexRow">
+                      <div class="bottomSection h75 w25 flexRow"><i class="fas fa-hands-helping"></i></div>
+                      <div class="bottomSection h75 w25 flexRow"><i class="fas fa-money-bill-wave"></i></div>
+                      <div class="bottomSection h75 w25 flexRow"><i class="fas fa-chart-line"></i></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="middleScreen" class="fullHeight fullWidth firstLift flexCol">
+                  <div id="urlBar" class="flexRow h10 w90 hideElementBC">
+                    <div id="urlCircle" class="hideElement"></div>
+                    <p id="urlText" class="">yourwebsite.com</p>
+                  </div>
+                  <div id="screenInside" class="h80 w90">
+                    <div id="screenInsideTop" class="h50 fullWidth">
+                      <div id="screenInsideTopTop" class="h25 fullWidth flexRow">
+                        <div id="screenMenu" class="hideElement">
+                          <i class="fas fa-bars"></i>
+                        </div>
+                        <div id="screenSignIn" class="flexRow hideElement">
+                          <div class="">
+                            <p>sign up</p>
+                          </div>
+                          <div class="">
+                            <p>sign in</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="screenInsideTopBottom" class="h75 fullWidth flexRow hideElement">
+                        <p><span data='0'>I</span><span data='1'>N</span><span data='2'>N</span><span data='3'>O</span><span data='4'>V</span><span data='5'>A</span><span data='6'>T</span><span data='7'>E</span></p>
+                      </div>
+                    </div>
+                    <div id="screenInsideBottom" class="h50 fullWidth flexRow">
+                      <div class="bottomSection h75 w25 flexRow hideElement"><i class="fas fa-hands-helping"></i></div>
+                      <div class="bottomSection h75 w25 flexRow hideElement"><i class="fas fa-money-bill-wave"></i></div>
+                      <div class="bottomSection h75 w25 flexRow hideElement"><i class="fas fa-chart-line"></i></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="frontScreen" class="fullHeight fullWidth firstLift secondLift flexCol">
+                  <div id="urlBar" class="flexRow h10 w90 hideElement">
+                    <div id="urlCircle"></div>
+                    <p id="urlText">yourwebsite.com</p>
+                  </div>
+                  <div id="screenInside" class="h80 w90 hideElementBC">
+                    <div id="screenInsideTop" class="h50 fullWidth">
+                      <div id="screenInsideTopTop" class="h25 fullWidth flexRow">
+                        <div id="screenMenu" class="">
+                          <i class="fas fa-bars"></i>
+                        </div>
+                        <div id="screenSignIn" class="flexRow">
+                          <div class="pointer" ng-click='showSignUp()'>
+                            <p>sign up</p>
+                          </div>
+                          <div class="pointer" ng-click='showSignIn()'>
+                            <p>sign in</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="screenInsideTopBottom" class="h75 fullWidth flexRow">
+                        <p><span data='0'>I</span><span data='1'>N</span><span data='2'>N</span><span data='3'>O</span><span data='4'>V</span><span data='5'>A</span><span data='6'>T</span><span data='7'>E</span></p>
+                      </div>
+                    </div>
+                    <div id="screenInsideBottom" class="h50 fullWidth flexRow hideElementBC">
+                      <div class="bottomSection h75 w25 flexRow"><i class="fas fa-hands-helping"></i></div>
+                      <div class="bottomSection h75 w25 flexRow"><i class="fas fa-money-bill-wave"></i></div>
+                      <div class="bottomSection h75 w25 flexRow"><i class="fas fa-chart-line"></i></div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+          </div>
+
+          </div>
+          <div id="bname" class="flexRow">
+            <div class="">
+              <p>LET'S</p>
+              <p class="redText">BUILD</p>
+              <p>YOUR</p>
+              <p>WEBSITE</p>
+            </div>
+          </div>
+          <div id="navBar" class="fullWidth flexRow">
+            <div id="navBtns" class="flexRow fullHeight">
+              <div class="navBtn flexRow fullHeight">
+                <p class="pageName">SERVICES</p>
+                <p class="pageNumber">/01</p>
+              </div>
+            </div>
+            <div id="navBtns" class="flexRow fullHeight">
+              <div class="navBtn flexRow fullHeight">
+                <p class="pageName">COST</p>
+                <p class="pageNumber">/02</p>
+              </div>
+            </div>
+            <div id="navBtns" class="flexRow fullHeight">
+              <div class="navBtn flexRow fullHeight">
+                <p class="pageName">CONTACT</p>
+                <p class="pageNumber">/03</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- service page -->
+        <div id="servicePageLocation" class=""></div>
+        <div id="servicePage" class="fullHeightWebPage fullWidth">
+          <div class="fullWidth h50 pageRedBar flexRow">
+            <p>SERVICES</p>
+          </div>
+          <div class="fullWidth h50">
+
+          </div>
+        </div>
+
+        <!-- cost page -->
+        <div id="costPageLocation" class=""></div>
+        <div id="costPage" class="fullWidth show">
+
+        </div>
+
+        <!-- contact page -->
+        <div id="contactPageLocation" class=""></div>
+        <div id="contactPage" class="fullHeightWebPage fullWidth show">
+
+        </div>
+
+      </div>
+
+      <div id="techBarContainer" class="fullHeight">
+        <div id="techBar" class="fullSize">
+
+        </div>
+      </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+  </body>
+</html>

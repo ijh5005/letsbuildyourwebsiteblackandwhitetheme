@@ -1,0 +1,122 @@
+:root {
+  --red: #AD2634;
+  --techBar: #1B1C1D;
+}
+
+body {
+  font-family: 'Jaldi', sans-serif;
+  font-family: 'Mitr', sans-serif;
+}
+
+/* general */
+.fullHeightWebPage {
+  height: 100vh;
+}
+
+.redText {
+  color: var(--red);
+}
+
+/* container */
+#container {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* content */
+#content {
+}
+
+/* home page */
+#homePage {
+  align-items: flex-start;
+  background: rgb(32,33,35);
+  background: radial-gradient(circle, rgba(32,33,35,1) 10%, rgba(8,9,10,1) 83%);
+  color: #fff;
+  position: relative;
+}
+
+#computerBox {
+  position: absolute;
+  right: 10em;
+  top: 6em;
+}
+
+#bname {
+  height: 100%;
+  margin-left: 14rem;
+}
+
+#bname p {
+  font-size: 9rem;
+  font-weight: 400;
+  line-height: 0.8;
+  margin: 0;
+}
+
+#navBar {
+  align-items: flex-end;
+  height: 3.6em;
+  justify-content: flex-start;
+}
+
+#navBtns {
+  color: #fff;
+  font-size: 1em;
+  font-weight: 100;
+}
+
+#navBtns:first-child {
+  margin-left: 14rem;
+}
+
+.navBtn {
+  border-right: 0.04em solid rgba(255, 255, 255, 0.6);
+  justify-content: space-between;
+  width: 14em;
+}
+
+.pageName {
+  letter-spacing: 3px;
+  margin: 0 1.4em;
+  opacity: 0.6;
+}
+
+.pageNumber {
+  color: var(--red);
+  font-weight: 300;
+  margin: 0 1.4em;
+}
+
+/* service page */
+#servicePage {
+}
+
+.pageRedBar {
+  background-color: var(--red);
+  color: #fff;
+}
+
+.pageRedBar p {
+  font-size: 16em;
+  font-weight: 300;
+}
+
+/* cost page */
+#costPage {
+  height: 50vh;
+}
+
+/* contact page */
+#contactPage {
+}
+
+/* techBar */
+#techBarContainer {
+  width: 8em;
+}
+
+#techBar {
+  background-color: var(--techBar);
+  position: fixed;
+}

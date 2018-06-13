@@ -1,0 +1,31 @@
+#selector,
+.bottomSection {
+  transition: all 0.5s;
+}
+
+#screen {
+  transition: all 2s;
+}
+
+#screen > *,
+#loginBox {
+  transition: all 1s;
+}
+
+#screenSignIn > * > *,
+#screenInsideTopBottom > * > span,
+#signInBtn {
+  transition: all 0.5s;
+}
+
+#screenSignIn > * > *:hover {
+  background-color: var(--red);
+}
+
+.bottomSection:hover {
+  transform: scale(1.2);
+}
+
+#signInBtn:hover {
+  background-color: #215e5e;
+}
