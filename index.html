@@ -19,6 +19,7 @@
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
 
   </head>
   <body ng-app='app' ng-controller='ctrl' ng-cloak>
@@ -30,7 +31,7 @@
         <!-- home page -->
         <div id="homePageLocation" class=""></div>
         <div id="homePage" class="fullHeightWebPage fullWidth flexCol">
-          <div id="computerBox" class="fullHeight w50">
+          <div id="computerBox" class="fullHeight w50" data-scroll-speed="2">
 
             <div id="screenContainer" class="">
               <div id="screen" class="fullHeight fullWidth phoneScreen">
@@ -134,10 +135,10 @@
           </div>
           <div id="bname" class="flexRow">
             <div class="">
-              <p>LET'S</p>
+              <p class="homePageWhiteText">LET'S</p>
               <p class="redText">BUILD</p>
-              <p>YOUR</p>
-              <p>WEBSITE</p>
+              <p class="homePageWhiteText">YOUR</p>
+              <p class="homePageWhiteText">WEBSITE</p>
             </div>
           </div>
           <div id="navBar" class="fullWidth flexRow">
@@ -168,14 +169,17 @@
           <div class="fullWidth h50 pageRedBar flexRow">
             <p>SERVICES</p>
           </div>
-          <div class="fullWidth h50">
-
+          <div class="fullWidth h50 flexRow textSection">
+            <div class="" ng-repeat='service in data["page"]["servicePage"] track by $index'>
+              <p class="textSectionHeading">{{service['heading']}}</p>
+              <p class="textSectionBody">{{service['body']}}</p>
+            </div>
           </div>
         </div>
 
         <!-- cost page -->
         <div id="costPageLocation" class=""></div>
-        <div id="costPage" class="fullWidth show">
+        <div id="costPage" class="fullWidth">
 
         </div>
 

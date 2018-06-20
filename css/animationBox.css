@@ -55,7 +55,7 @@
 
 #screenMenu > * {
   color: var(--red);
-  font-size: 3em;
+  font-size: 2em;
   opacity: 0.6;
 }
 
@@ -85,7 +85,7 @@
 #screenInsideTopBottom > * > * {
   color: #fff;
   font-size: 6rem;
-  opacity: 0.1;
+  opacity: 0.08;
   font-weight: 300;
 }
 
@@ -121,10 +121,10 @@
 }
 
 #screenContainer {
-  height: 26em;
+  height: 40em;
   margin: 2em auto;
   perspective: 1000px;
-  width: 38em;
+  width: 60em;
 }
 
 .phoneScreen {

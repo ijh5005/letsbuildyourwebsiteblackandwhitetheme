@@ -5,7 +5,7 @@
 
 body {
   font-family: 'Jaldi', sans-serif;
-  font-family: 'Mitr', sans-serif;
+  /* font-family: 'Mitr', sans-serif; */
 }
 
 /* general */
@@ -15,6 +15,30 @@ body {
 
 .redText {
   color: var(--red);
+}
+
+.textSection {
+  align-items: flex-start;
+}
+
+.textSection div {
+  width: 22em;
+  margin: 1em;
+  margin-top: 8em;
+}
+
+.textSectionHeading {
+  font-size: 2.6em;
+  font-weight: bolder;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.textSectionBody {
+  color: #888;
+  font-size: 1.28em;
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* container */
@@ -37,21 +61,28 @@ body {
 }
 
 #computerBox {
+  opacity: 0.4;
   position: absolute;
-  right: 10em;
-  top: 6em;
+  right: 14em;
+  top: 10em;
+  z-index: 1;
 }
 
 #bname {
   height: 100%;
   margin-left: 14rem;
+  z-index: 2;
 }
 
 #bname p {
-  font-size: 9rem;
-  font-weight: 400;
+  font-size: 12rem;
+  font-weight: bolder;
   line-height: 0.8;
   margin: 0;
+}
+
+.homePageWhiteText {
+  opacity: 0.8;
 }
 
 #navBar {
@@ -99,12 +130,15 @@ body {
 
 .pageRedBar p {
   font-size: 16em;
-  font-weight: 300;
+  font-weight: bolder;
+  opacity: 0.2;
 }
 
 /* cost page */
 #costPage {
   height: 50vh;
+  background-image: url('../img/blur.png');
+  background-size: 100% 100%;
 }
 
 /* contact page */
@@ -119,4 +153,5 @@ body {
 #techBar {
   background-color: var(--techBar);
   position: fixed;
+  z-index: 0;
 }
