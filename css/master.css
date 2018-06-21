@@ -1,4 +1,5 @@
 :root {
+  --lightRed: #da5865;
   --red: #AD2634;
   --techBar: #1B1C1D;
 }
@@ -22,16 +23,16 @@ body {
 }
 
 .textSection div {
-  width: 22em;
   margin: 1em;
   margin-top: 8em;
+  width: 22em;
 }
 
 .textSectionHeading {
   font-size: 2.6em;
   font-weight: bolder;
-  margin: 0;
   line-height: 1.4;
+  margin: 0;
 }
 
 .textSectionBody {
@@ -87,8 +88,12 @@ body {
 
 #navBar {
   align-items: flex-end;
+  background: transparent;
   height: 3.6em;
   justify-content: flex-start;
+  position: relative;
+  top: 0;
+  z-index: 4;
 }
 
 #navBtns {
@@ -136,9 +141,29 @@ body {
 
 /* cost page */
 #costPage {
-  height: 50vh;
   background-image: url('../img/blur.png');
   background-size: 100% 100%;
+  flex-wrap: wrap;
+  min-height: 50vh;
+}
+
+.pricingBox {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 1em;
+  height: 20em;
+  margin: 1em;
+  overflow: hidden;
+  position: relative;
+  width: 30em;
+}
+
+.pricingBox i {
+  color: var(--red);
+  font-size: 6em;
+  margin: 2rem;
+  opacity: 0.4;
+  position: absolute;
+  right: 0;
 }
 
 /* contact page */
@@ -153,5 +178,5 @@ body {
 #techBar {
   background-color: var(--techBar);
   position: fixed;
-  z-index: 0;
+  z-index: 5;
 }

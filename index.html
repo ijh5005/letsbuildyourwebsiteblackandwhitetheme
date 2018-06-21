@@ -142,22 +142,10 @@
             </div>
           </div>
           <div id="navBar" class="fullWidth flexRow">
-            <div id="navBtns" class="flexRow fullHeight">
-              <div class="navBtn flexRow fullHeight">
-                <p class="pageName">SERVICES</p>
-                <p class="pageNumber">/01</p>
-              </div>
-            </div>
-            <div id="navBtns" class="flexRow fullHeight">
-              <div class="navBtn flexRow fullHeight">
-                <p class="pageName">COST</p>
-                <p class="pageNumber">/02</p>
-              </div>
-            </div>
-            <div id="navBtns" class="flexRow fullHeight">
-              <div class="navBtn flexRow fullHeight">
-                <p class="pageName">CONTACT</p>
-                <p class="pageNumber">/03</p>
+            <div id="navBtns" class="flexRow fullHeight pointer" ng-repeat='navigationOption in navigation track by $index'>
+              <div class="navBtn flexRow fullHeight" ng-click='goTo(navigationOption.pageLocation)'>
+                <p class="pageName">{{navigationOption.navBarName}}</p>
+                <p class="pageNumber">{{navigationNumberLable($index)}}</p>
               </div>
             </div>
           </div>
@@ -179,8 +167,10 @@
 
         <!-- cost page -->
         <div id="costPageLocation" class=""></div>
-        <div id="costPage" class="fullWidth">
-
+        <div id="costPage" class="fullWidth flexRow">
+          <div class="pricingBox" ng-repeat='iconObj in data["icons"] track by $index'>
+            <i class={{iconClass(iconObj)}}></i>
+          </div>
         </div>
 
         <!-- contact page -->

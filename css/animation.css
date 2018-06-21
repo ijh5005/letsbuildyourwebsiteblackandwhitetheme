@@ -1,5 +1,6 @@
 #selector,
-.bottomSection {
+.bottomSection,
+.navBtn {
   transition: all 0.5s;
 }
 
@@ -28,4 +29,8 @@
 
 #signInBtn:hover {
   background-color: #215e5e;
+}
+
+.navBtn:hover {
+  color: var(--lightRed);
 }
