@@ -5,6 +5,10 @@ var app = angular.module('app', []);
 app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task', 'data', function($scope, $rootScope, $interval, $timeout, task, data){
   //data for the page
   $rootScope.data;
+  //techbar animation tracker
+  $rootScope.techBarAnimationDoneFor = {
+    cost: false
+  }
   //navigation options
   $scope.navigation = data.navigation;
   //navigation number label
@@ -18,6 +22,19 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   //cost page icon classes
   $scope.iconClass = (iconObj) => {
     return iconObj['icon'];
+  }
+  //hide cost page until icons load
+  $scope.showCostPage = true;
+  //tech page contact method
+  $scope.hoverTechPageCostIcon = (index) => {
+    if(index === 'reset'){
+      $('div').removeClass('hoverShortDescription').removeClass('hoverLongDescription');
+      $('i').removeClass('hoverIcon').removeClass('opacity1');
+    }
+    $(`.techCostPage i[data="${index}"]`).addClass('opacity1');
+    $(`.pricingBox[data="${index}"] div.shortDescription`).addClass('hoverShortDescription');
+    $(`.pricingBox[data="${index}"] div.longDescription`).addClass('hoverLongDescription');
+    $(`.pricingBox[data="${index}"] i`).addClass('hoverIcon');
   }
   //start the homepage animation
   task.startHomePageAnimation();
@@ -115,6 +132,7 @@ app.service('task', function($rootScope, $interval, $timeout, data){
         $('#navBar').css('position', 'fixed').css('background', 'rgba(8,9,10,0.8)');
       } else if(currentPosition >= costPageLocation){
         $('#navBar').css('position', 'fixed').css('background', 'rgba(8,9,10,0.8)');
+        this.techBarCostAnimation();
       } else if((currentPosition >= servicePageLocation) || (currentPosition >= navPosition)){
         $('#navBar').css('position', 'fixed').css('background', 'rgba(8,9,10,0.8)');
       } else if(currentPosition >= homePageLocation){
@@ -127,6 +145,19 @@ app.service('task', function($rootScope, $interval, $timeout, data){
     const position = $(`#${pageLocation}`).position().top;
     // const position = this.find
     $("body, html").animate({ scrollTop: position }, 1000);
+  }
+  //cost page tech bar animation
+  this.techBarCostAnimation  = () => {
+    if(!$rootScope.techBarAnimationDoneFor['cost']){
+      const $icons = document.querySelectorAll('.techCost i');
+      for(let i = 0; i < $icons.length; i++){
+        const timeout = i * 100;
+        $timeout(() => {
+          $(`.techCost i[data="${i}"]`).css('transform', 'scale(1)');
+        }, timeout);
+      }
+    }
+    $rootScope.techBarAnimationDoneFor = true;
   }
 });
 
@@ -147,20 +178,35 @@ app.service('data', function($rootScope, $interval, $timeout){
           heading: 'INEXPENSIVE',
           body: 'Websites can cost thousands. No fear, I\'m here, with affordable prices. Check out the pricing table below for details.'
         }
+      ],
+      costPage: [
+        {
+          icons: [
+            { service: 'webpage',      icon: 'fas fa-file'         , cost: '$50', sub: 'each',   description: 'Includes a custom design. All content (ex: text, images, videos) you provide me with will be added.' },
+            { service: 'dashboard',    icon: 'fas fa-columns'      , cost: '$10', sub: '/month', description: 'Edit content on your website, edit existing product information, and add additional products at the click of a button.' },
+            { service: 'shoppingCart', icon: 'fas fa-shopping-cart', cost: '$80', sub: '',       description: 'Includes shopping cart, payment pages, and a third party payment service that is linked directly to your bank card.' },
+            { service: 'layout',       icon: 'fas fa-map'          , cost: '$25', sub: 'each',   description: 'Your website layout will fit devices of your choice including cell phones, tablets, desktops, and televisions.' },
+            { service: 'signIn',       icon: 'fas fa-sign-in-alt'  , cost: '$50', sub: '',       description: 'Includes a sign in/sign up forms page linked to a database that stores usernames and passwords.' },
+            { service: 'email',        icon: 'fas fa-envelope-open', cost: '$50', sub: '',       description: 'An application to email customers (ex. promotional sales). This computer and mobile app not to be displayed on your website.' },
+            { service: 'text',         icon: 'fas fa-mobile'       , cost: '$50', sub: '',       description: 'An application to text customers (ex. appointment reminders). This computer and mobile app not to be displayed on your website.' },
+            { service: 'animation',    icon: 'fas fa-fighter-jet'  , cost: '$50', sub: '',       description: 'Custom animations to help your website stand out and build a smooth customer experience.' },
+            { service: 'contact',      icon: 'fas fa-phone'        , cost: '$25', sub: '',       description: 'This form is a convenient way for customers to contact you.' },
+            { service: 'feedback',     icon: 'fas fa-pencil-alt'   , cost: '$25', sub: '',       description: 'This form is a convenient way for customers to leave feedback.' }
+          ]
+        }
+      ],
+      maintenance: [
+        {
+          heading: 'DASHBOARD',
+          body: '- $20/month - Change your website content at the click of a button with the dashboard.'
+        },
+        {
+          heading: 'HIRE ME!',
+          body: '- $25/hour - Don\'t have the time to maintain your website? I can do it for you.'
+        },
       ]
     },
-    icons: [
-      { name: 'webpage',      icon: 'fas fa-file'           },
-      { name: 'dashboard',    icon: 'fas fa-columns'        },
-      { name: 'shoppingCart', icon: 'fas fa-shopping-cart'  },
-      { name: 'layout',       icon: 'fas fa-map'            },
-      { name: 'signIn',       icon: 'fas fa-sign-in-alt'    },
-      { name: 'email',        icon: 'fas fa-envelope-open'  },
-      { name: 'text',         icon: 'fas fa-mobile'         },
-      { name: 'animation',    icon: 'fas fa-fighter-jet'    },
-      { name: 'contact',      icon: 'fas fa-phone'          },
-      { name: 'feedback',     icon: 'fas fa-pencil-alt'     }
-    ]
+
   };
   //navigation options
   this.navigation = [

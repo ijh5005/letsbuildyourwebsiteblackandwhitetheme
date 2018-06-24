@@ -1,6 +1,9 @@
 #selector,
 .bottomSection,
-.navBtn {
+.navBtn,
+.pricingBox i,
+.techCost i,
+.techCostPage i {
   transition: all 0.5s;
 }
 
@@ -33,4 +36,50 @@
 
 .navBtn:hover {
   color: var(--lightRed);
+}
+
+.pricingBox:hover i {
+  right: 65%;
+}
+
+.shortDescription  {
+  transition: all 0.2s;
+  transition-delay: 0.3s;
+}
+
+.pricingBox:hover .shortDescription {
+  opacity: 0;
+  transition: all 0s;
+  transition-delay: 0s;
+}
+
+.longDescription {
+  transition: all 0s;
+  transition-delay: 0s;
+}
+
+.pricingBox:hover .longDescription {
+  opacity: 1;
+  transition: all 0.2s;
+  transition-delay: 0.3s;
+}
+
+.hoverIcon {
+  right: 65% !important;
+}
+
+.hoverShortDescription {
+  opacity: 0;
+  transition: all 0s;
+  transition-delay: 0s;
+}
+
+.hoverLongDescription {
+  opacity: 1;
+  transition: all 0.2s;
+  transition-delay: 0.3s;
+}
+
+.opacity1 {
+  opacity: 1 !important;
 }
