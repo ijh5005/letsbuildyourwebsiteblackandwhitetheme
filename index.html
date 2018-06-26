@@ -225,12 +225,21 @@
 
       <div id="techBarContainer" class="fullHeight">
         <div id="techBar" class="fullHeight flexCol">
-          <div class="techCostPage">
+
+          <div class="arrowContainer fullWidth flexRow pointer" ng-click='goUp()'>
+            <p class="arrowTop">&#x2191;</p>
+          </div>
+
+          <div class="techCostPage" ng-if='currentPage === "costPageLocation"'>
             <div class="flexCol">
-              <div ng-mouseover='hoverTechPageCostIcon($index)' ng-mouseout='hoverTechPageCostIcon("reset")' class="techCost" ng-repeat='iconObj in data.page.costPage["0"].icons track by $index'>
+              <div data={{$index}} ng-mouseover='hoverTechPageCostIcon($index)' ng-mouseout='hoverTechPageCostIconReset()' class="techCost" ng-repeat='iconObj in data.page.costPage["0"].icons track by $index'>
                 <i data={{$index}} class={{iconClass(iconObj)}}></i>
               </div>
             </div>
+          </div>
+
+          <div class="arrowContainer fullWidth flexRow pointer" ng-click='goDown()'>
+            <p class="arrowBottom">&#x2193;</p>
           </div>
         </div>
       </div>

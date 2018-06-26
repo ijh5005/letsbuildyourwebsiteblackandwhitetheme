@@ -1,10 +1,15 @@
 'use strict';
+console.log('built by Isaiah Harrison');
 
 var app = angular.module('app', []);
 
 app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task', 'data', function($scope, $rootScope, $interval, $timeout, task, data){
   //data for the page
   $rootScope.data;
+  //the current page
+  $rootScope.currentPage = 'homePageLocation';
+  //page scroll time
+  $rootScope.pageScrollTime = 1000;
   //techbar animation tracker
   $rootScope.techBarAnimationDoneFor = {
     cost: false
@@ -27,14 +32,25 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   $scope.showCostPage = true;
   //tech page contact method
   $scope.hoverTechPageCostIcon = (index) => {
-    if(index === 'reset'){
-      $('div').removeClass('hoverShortDescription').removeClass('hoverLongDescription');
-      $('i').removeClass('hoverIcon').removeClass('opacity1');
-    }
+    const scrollPosition = $(`#costPage div[data="${index}"`).position().top - 100;
+    $("body, html").animate({ scrollTop: scrollPosition }, 250);
     $(`.techCostPage i[data="${index}"]`).addClass('opacity1');
     $(`.pricingBox[data="${index}"] div.shortDescription`).addClass('hoverShortDescription');
     $(`.pricingBox[data="${index}"] div.longDescription`).addClass('hoverLongDescription');
     $(`.pricingBox[data="${index}"] i`).addClass('hoverIcon');
+  }
+  //tech page contact method reset
+  $scope.hoverTechPageCostIconReset = () => {
+    $('div').removeClass('hoverShortDescription').removeClass('hoverLongDescription');
+    $('i').removeClass('hoverIcon').removeClass('opacity1');
+  }
+  //go up one page
+  $scope.goUp = () => {
+    task.goUp();
+  }
+  //go down one page
+  $scope.goDown = () => {
+    task.goDown();
   }
   //start the homepage animation
   task.startHomePageAnimation();
@@ -42,8 +58,10 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   task.setPageContent();
   //set scroll speed of webpage
   task.setScrollSpeed();
-  //check sticky navigation bar
-  task.stickyNavigation();
+  $timeout(() => {
+    //check sticky navigation bar
+    task.stickyNavigation();
+  })
 }]);
 
 
@@ -118,46 +136,77 @@ app.service('task', function($rootScope, $interval, $timeout, data){
       $('[data-scroll-speed]').moveIt();
     });
   }
+  //get posiions of nav elements on UI
+  this.getNavPointPositions = () => {
+    return {
+      navPosition :         $('#navBar').position().top,
+      homePageLocation :    $('#homePageLocation').position().top,
+      servicePageLocation : $('#servicePageLocation').position().top,
+      costPageLocation :    $('#costPageLocation').position().top,
+      contactPageLocation : $('#contactPageLocation').position().top
+    }
+  }
   //forces the navigationto stick to the top when positioned after the second page
   this.stickyNavigation = () => {
-    const navPosition = $('#navBar').position().top;
-    const homePageLocation = $('#homePageLocation').position().top;
-    const servicePageLocation = $('#servicePageLocation').position().top;
-    const costPageLocation = $('#costPageLocation').position().top;
-    const contactPageLocation = $('#contactPageLocation').position().top;
+    const position = this.getNavPointPositions();
     $(window).scroll(() => {
       const currentPosition = $('content').prevObject["0"].scrollingElement.scrollTop;
-
-      if(currentPosition >= contactPageLocation){
+      if(currentPosition >= position.contactPageLocation){
         $('#navBar').css('position', 'fixed').css('background', 'rgba(8,9,10,0.8)');
-      } else if(currentPosition >= costPageLocation){
+        $rootScope.currentPage = 'contactPageLocation';
+      } else if(currentPosition >= position.costPageLocation){
         $('#navBar').css('position', 'fixed').css('background', 'rgba(8,9,10,0.8)');
-        this.techBarCostAnimation();
-      } else if((currentPosition >= servicePageLocation) || (currentPosition >= navPosition)){
+        $rootScope.currentPage = 'costPageLocation';
+        $timeout(() => {
+          this[data['navigation'][this.findIndexOfCurrentPage()]['animation']]();
+        }, $rootScope.pageScrollTime - 5)
+      } else if((currentPosition >= position.servicePageLocation) || (currentPosition >= position.navPosition)){
         $('#navBar').css('position', 'fixed').css('background', 'rgba(8,9,10,0.8)');
-      } else if(currentPosition >= homePageLocation){
+        $rootScope.currentPage = 'servicePageLocation';
+      } else if(currentPosition >= position.homePageLocation){
         $('#navBar').css('position', 'relative').css('background', 'transparent');
+        $rootScope.currentPage = 'homePageLocation';
       }
     })
   }
   //navigation click
   this.goTo = (pageLocation) => {
     const position = $(`#${pageLocation}`).position().top;
-    // const position = this.find
-    $("body, html").animate({ scrollTop: position }, 1000);
+    $("body, html").animate({ scrollTop: position }, $rootScope.pageScrollTime);
   }
   //cost page tech bar animation
   this.techBarCostAnimation  = () => {
-    if(!$rootScope.techBarAnimationDoneFor['cost']){
-      const $icons = document.querySelectorAll('.techCost i');
-      for(let i = 0; i < $icons.length; i++){
-        const timeout = i * 100;
-        $timeout(() => {
-          $(`.techCost i[data="${i}"]`).css('transform', 'scale(1)');
-        }, timeout);
-      }
+    const $icons = document.querySelectorAll('.techCost i');
+    for(let i = 0; i < $icons.length; i++){
+      const timeout = i * 50;
+      $timeout(() => {
+        $(`.techCost i[data="${i}"]`).css('transform', 'scale(1)');
+      }, timeout);
     }
-    $rootScope.techBarAnimationDoneFor = true;
+  }
+  //find index of current page
+  this.findIndexOfCurrentPage = () => {
+    let currentPageIndex;
+    data.navigation.map((data, index) => {
+      if(data.pageLocation === $rootScope.currentPage){
+        currentPageIndex = index;
+      }
+    })
+    return currentPageIndex;
+  }
+  //go up one page
+  this.goUp = () => {
+    const indexToGoTo = this.findIndexOfCurrentPage() - 1;
+    if(indexToGoTo >= 0){
+      this.goTo(data['navigation'][indexToGoTo]['pageLocation']);
+    }
+  }
+  //go down one page
+  this.goDown = () => {
+    const indexToGoTo = this.findIndexOfCurrentPage() + 1;
+    if(indexToGoTo < data['navigation'].length){
+      this.goTo(data['navigation'][indexToGoTo]['pageLocation']);
+    }
   }
 });
 
@@ -210,9 +259,9 @@ app.service('data', function($rootScope, $interval, $timeout){
   };
   //navigation options
   this.navigation = [
-    { navBarName: 'HOME', pageLocation: 'homePageLocation' },
-    { navBarName: 'SERVICES', pageLocation: 'servicePageLocation' },
-    { navBarName: 'COST', pageLocation: 'costPageLocation' },
-    { navBarName: 'CONTACT', pageLocation: 'contactPageLocation' }
+    { navBarName: 'HOME',     pageLocation: 'homePageLocation',    animation: '' },
+    { navBarName: 'SERVICES', pageLocation: 'servicePageLocation', animation: '' },
+    { navBarName: 'COST',     pageLocation: 'costPageLocation',    animation: 'techBarCostAnimation' },
+    { navBarName: 'CONTACT',  pageLocation: 'contactPageLocation', animation: '' }
   ];
 });

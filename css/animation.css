@@ -3,7 +3,8 @@
 .navBtn,
 .pricingBox i,
 .techCost i,
-.techCostPage i {
+.techCostPage i,
+.arrowContainer {
   transition: all 0.5s;
 }
 
@@ -82,4 +83,8 @@
 
 .opacity1 {
   opacity: 1 !important;
+}
+
+.arrowContainer:hover {
+  opacity: 1;
 }
