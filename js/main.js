@@ -231,13 +231,13 @@ app.service('data', function($rootScope, $interval, $timeout){
       costPage: [
         {
           icons: [
-            { service: 'Website Page',      icon: 'fas fa-file'         , cost: '$60', sub: 'each',   description: 'Each page (ex: home page, about page) will cost $60 each and includes a custom design. All content (ex: text, images, videos) you provide me with will be added.' },
-            { service: 'Dashboard',         icon: 'fas fa-columns'      , cost: '$20', sub: '/month', description: 'Edit content on your website from the dashboard. Which includes text, images, and products' },
-            { service: 'Transaction Setup', icon: 'fas fa-shopping-cart', cost: '$80', sub: '',       description: 'Earn money. This service includes a shopping cart set up so you can sell you products. Includes a third party payment service that is linked directly to your bank card.' },
-            { service: 'Athentication',     icon: 'fas fa-sign-in-alt'  , cost: '$50', sub: '',       description: 'Your user will have the ability to sign in to your website. This help to build a person relationship with your customers and speeds the checkout process' },
-            { service: 'Email Form',        icon: 'fas fa-envelope-open', cost: '$50', sub: '',       description: 'Email your customers this week\'s promotions. This includes aa reusable email template ready to send to all customers.' },
-            { service: 'Text Form',         icon: 'fas fa-mobile'       , cost: '$50', sub: '',       description: 'Text your customers appointment reminder. We are in the times where texting has become a primary avenue to communicate.' },
+            { service: 'Website Page',      icon: 'fas fa-book-open'    , cost: '$60', sub: 'each',   description: 'Each page (ex: home page, about page) will cost $60 each and includes a custom design. All content (ex: text, images, videos) you provide me with will be added.' },
+            { service: 'Dashboard',         icon: 'fas fa-wrench'       , cost: '$20', sub: '/month', description: 'Edit content on your website from the dashboard. Which includes text, images, and products' },
+            { service: 'Transaction Setup', icon: 'fas fa-credit-card'  , cost: '$80', sub: '',       description: 'Earn money. This service includes a shopping cart page so you can sell you products. Also, a third party payment service is linked directly to your bank card.' },
+            { service: 'Athentication',     icon: 'fas fa-sign-in-alt'  , cost: '$50', sub: '',       description: 'Have a user sign in to your website optionally. This helps build a personal relationship with your customers and speeds the checkout process' },
             { service: 'Animations',        icon: 'fas fa-fighter-jet'  , cost: '$50', sub: '',       description: 'Includes custom animations to help your website stand out and build a smooth customer experience.' },
+            { service: 'Email Form',        icon: 'fas fa-at'           , cost: '$50', sub: '',       description: 'Email your customers this week\'s promotions. This includes a reusable email template ready to send to all customers.' },
+            { service: 'Text Form',         icon: 'fas fa-mobile'       , cost: '$50', sub: '',       description: 'Text your customers appointment reminders. Texting has become a primary source of communication.' },
             { service: 'Contact Form',      icon: 'fas fa-phone'        , cost: '$25', sub: '',       description: 'This form is a convenient way for customers to contact you.' },
             { service: 'Feedback Form',     icon: 'fas fa-pencil-alt'   , cost: '$25', sub: '',       description: 'This form is a convenient way for customers to leave feedback.' }
           ]
