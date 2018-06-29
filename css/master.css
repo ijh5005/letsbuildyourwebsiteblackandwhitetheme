@@ -139,6 +139,12 @@ body {
   opacity: 0.2;
 }
 
+.serviceSecctionBox {
+  /* padding: 2em; */
+  position: relative;
+  top: 0;
+}
+
 
 /* maintenance */
 #maintenancePage {
@@ -258,7 +264,7 @@ body {
 
 #formSection form input {
   height: 3rem;
-  margin-bottom: 1em;
+  margin-bottom: 0.6em;
   width: 10.4em;
 }
 
@@ -278,8 +284,13 @@ body {
 
 #formSection input,
 #formSection textarea {
-  border: 0.1rem solid #ddd;
+  background-color: #BF565D;
+  border: none;
+  border-radius: 0.6em;
+  color: #fff;
   font-size: 1.4em;
+  font-weight: 200;
+  letter-spacing: 3px;
   padding-left: 0.5em;
 }
 

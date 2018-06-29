@@ -17,9 +17,13 @@
   transition: all 1s;
 }
 
+.serviceSecctionBox {
+  transition: all 0.2s;
+}
+
 #screenSignIn > * > *,
 #screenInsideTopBottom > * > span,
-#signInBtn {
+#signInBtn{
   transition: all 0.5s;
 }
 
@@ -87,4 +91,17 @@
 
 .arrowContainer:hover {
   opacity: 1;
+}
+
+.serviceSecctionBox:hover {
+  /* -webkit-box-shadow: 0px 10px 34px -5px rgba(136,136,136,1);
+  -moz-box-shadow: 0px 10px 34px -5px rgba(136,136,136,1);
+  box-shadow: 0px 10px 34px -5px rgba(136,136,136,1); */
+  /* padding: 2em; */
+  position: relative;
+  top: -1em;
+}
+
+.serviceSecctionBox:hover > .textSectionHeading {
+  color: var(--red);
 }
