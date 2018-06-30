@@ -1,6 +1,7 @@
 :root {
   --lightRed: #da5865;
   --red: #AD2634;
+  --lighterRed: #D01219;
   --techBar: #1B1C1D;
 }
 
@@ -42,10 +43,24 @@ body {
   margin: 0;
 }
 
+input:focus,
+textarea:focus {
+  outline-color: var(--lighterRed);
+}
+
+.redText {
+  color: var(--red);
+}
+
+.redTextSmall {
+  color: var(--lighterRed);
+}
+
 /* container */
 #container {
   height: 100vh;
   width: 100vw;
+  /* overflow-x: hidden; */
 }
 
 /* content */
@@ -241,6 +256,32 @@ body {
 #contactPage {
 }
 
+#contactPageBottomLiner {
+  justify-content: space-between;
+  width: 56em;
+}
+
+#contactInformationSection p {
+  font-size: 1em;
+}
+
+#contactInformationSection p#websiteSection {
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+#slogan {
+  margin-top: 0;
+}
+
+.contactPageDirectText {
+  color: #888;
+}
+
+#number {
+  color: #000;
+}
+
 #contactPageBottom {
   align-items: center;
 }
@@ -249,11 +290,19 @@ body {
 #formSection {
   height: 18em;
   margin: 1em;
-  width: 30em;
 }
 
 #contactInformationSection a {
   text-decoration: none;
+}
+
+#contactInformationSection a p {
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+#contactInformationSection {
+  width: 20em;
 }
 
 #formSection {
@@ -268,8 +317,8 @@ body {
 
 #formSection form input {
   height: 3rem;
-  margin-bottom: 0.6em;
-  width: 10.4em;
+  margin-bottom: 1em;
+  width: 14.4em;
 }
 
 #formSection form input::placeholder,
@@ -282,19 +331,16 @@ body {
 }
 
 #formSection form textarea {
-  height: 9.2em;
+  height: 8em;
   width: 100%;
 }
 
 #formSection input,
 #formSection textarea {
-  background-color: #BF565D;
-  border: none;
-  border-radius: 0.6em;
-  color: #fff;
-  font-size: 1.4em;
-  font-weight: 200;
-  letter-spacing: 3px;
+  border: 0.1rem solid #E1E2E3;
+  font-size: 1em;
+  font-weight: 400;
+  letter-spacing: 2px;
   padding-left: 0.5em;
 }
 
@@ -302,6 +348,12 @@ body {
   justify-content: space-between;
   margin: 0;
   width: 100%;
+}
+
+#sendBtn {
+  height: 4em;
+  width: 100%;
+  color: var(--lighterRed);
 }
 
 /* techBar */

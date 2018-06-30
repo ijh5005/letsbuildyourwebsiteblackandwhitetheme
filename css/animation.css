@@ -4,7 +4,8 @@
 .pricingBox i,
 .techCost i,
 .techCostPage i,
-.arrowContainer {
+.arrowContainer,
+#sendBtn {
   transition: all 0.5s;
 }
 
@@ -91,6 +92,7 @@
 
 .arrowContainer:hover {
   opacity: 1;
+  font-weight: bold;
 }
 
 .serviceSecctionBox:hover {
@@ -103,5 +105,14 @@
 }
 
 .serviceSecctionBox:hover > .textSectionHeading {
-  color: var(--red);
+  color: var(--lighterRed);
+}
+
+#sendBtn:hover {
+  letter-spacing: 60px;
+}
+
+#sendBtn:active {
+  background-color: var(--lighterRed);
+  color: #fff;
 }

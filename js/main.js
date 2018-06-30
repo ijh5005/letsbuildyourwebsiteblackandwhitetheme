@@ -217,11 +217,11 @@ app.service('data', function($rootScope, $interval, $timeout){
       servicePage: [
         {
           heading: 'MULTI-DEVICE',
-          body: 'The solution is to have a great looking site for any device type. With my services, your site will look amazing on all devices.'
+          body: 'You will have a website that looks amazing on any device whether it\'s by phone, tablet, desktop, or even television.'
         },
         {
           heading: 'INTEGRATION',
-          body: 'We can always add more features later. No pressure to get it all at once. For now, focus on what is most important for your customers.'
+          body: 'Focus on what is most important for your customers. Choose the features that are most relevant for your current needs. We can always add more features later.'
         },
         {
           heading: 'INEXPENSIVE',
