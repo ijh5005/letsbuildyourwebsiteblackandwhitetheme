@@ -162,8 +162,8 @@ textarea:focus {
 
 /* maintenance */
 #maintenancePage {
-  background-color: #000;
   color: #ddd;
+  padding-bottom: 6em;
 }
 
 #maintenancePage .textSection div {
@@ -171,8 +171,13 @@ textarea:focus {
 }
 
 .costMainenance {
-  font-size: 4em;
-  margin: 0;
+  width: 46em;
+}
+
+.costMainenance p {
+  font-size: 6em;
+  margin-bottom: 0;
+  margin-top: 4rem;
 }
 
 /* cost page */
@@ -181,7 +186,7 @@ textarea:focus {
   background-size: 100% 100%;
   flex-wrap: wrap;
   min-height: 50vh;
-  padding-top: 8em;
+  padding-top: 6em;
 }
 
 .pricingBox {
@@ -378,6 +383,10 @@ textarea:focus {
   margin-top: 1em;
   opacity: 0.6;
   transform: scale(0);
+}
+
+.techCostPage i:first {
+  margin-top: 0;
 }
 
 .arrowContainer {

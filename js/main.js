@@ -8,6 +8,8 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   $rootScope.data;
   //the current page
   $rootScope.currentPage = 'homePageLocation';
+  //track the positions of the element on the page
+  $rootScope.position;
   //page scroll time
   $rootScope.pageScrollTime = 1000;
   //techbar animation tracker
@@ -32,7 +34,7 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   $scope.showCostPage = true;
   //tech page contact method
   $scope.hoverTechPageCostIcon = (index) => {
-    const scrollPosition = $(`#costPage div[data="${index}"`).position().top - 100;
+    const scrollPosition = $(`#costPage div[data="${index}"`).position().top - 60;
     $("body, html").animate({ scrollTop: scrollPosition }, 250);
     $(`.techCostPage i[data="${index}"]`).addClass('opacity1');
     $(`.pricingBox[data="${index}"] div.shortDescription`).addClass('hoverShortDescription');
@@ -61,6 +63,8 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   $timeout(() => {
     //check sticky navigation bar
     task.stickyNavigation();
+    //set the current page
+    task.setCurrentPage(task.indentifyCurrentPage());
   })
 }]);
 
@@ -136,37 +140,62 @@ app.service('task', function($rootScope, $interval, $timeout, data){
       $('[data-scroll-speed]').moveIt();
     });
   }
-  //get posiions of nav elements on UI
-  this.getNavPointPositions = () => {
-    return {
-      navPosition :         $('#navBar').position().top,
-      homePageLocation :    $('#homePageLocation').position().top,
+  //set posiions of nav elements on UI
+  this.setNavPointPositions = () => {
+    $rootScope.position = {
+      navPosition         : $('#navBar').position().top,
+      homePageLocation    : $('#homePageLocation').position().top,
       servicePageLocation : $('#servicePageLocation').position().top,
-      costPageLocation :    $('#costPageLocation').position().top,
+      costPageLocation    : $('#costPageLocation').position().top,
       contactPageLocation : $('#contactPageLocation').position().top
     }
   }
-  //forces the navigationto stick to the top when positioned after the second page
+  //position the navigation at the top of the UI
+  this.showNavigationAtTop = () => {
+    $('#navBar').css('position', 'fixed').css('background', 'rgba(8,9,10,0.8)');
+  }
+  //position the navigation at the bottom of the hompage
+  this.showNavigationAtBottom = () => {
+    $('#navBar').css('position', 'relative').css('background', 'transparent');
+  }
+  //set the current page
+  this.setCurrentPage = (currentPage) => {
+    $rootScope.currentPage = currentPage;
+  }
+  //switch techbar animation
+  this.techBarAnimationOnPage = (currentPage) => {
+    if(currentPage === 'costPageLocation'){
+      $timeout(() => {
+        this[data['navigation'][this.findIndexOfCurrentPage()]['animation']]();
+      }, $rootScope.pageScrollTime - 5)
+    }
+  }
+  //indentify which page we are on
+  this.indentifyCurrentPage = () => {
+    let currentPage;
+    let yOffset = 10;
+    const currentPosition = $('content').prevObject["0"].scrollingElement.scrollTop;
+    if(currentPosition >= $rootScope.position.contactPageLocation - yOffset){
+      currentPage = 'contactPageLocation';
+    } else if(currentPosition >= $rootScope.position.costPageLocation - yOffset){
+      currentPage = 'costPageLocation';
+    } else if((currentPosition >= $rootScope.position.servicePageLocation - yOffset) || (currentPosition >= $rootScope.position.navPosition)){
+      currentPage = 'servicePageLocation';
+    } else if(currentPosition >= $rootScope.position.homePageLocation - yOffset){
+      currentPage = 'homePageLocation';
+    }
+    return currentPage;
+  }
+  //track the position of the scrolling and control actions related to
   this.stickyNavigation = () => {
-    const position = this.getNavPointPositions();
+    this.setNavPointPositions();
+    $(window).resize(this.setNavPointPositions);
     $(window).scroll(() => {
-      const currentPosition = $('content').prevObject["0"].scrollingElement.scrollTop;
-      if(currentPosition >= position.contactPageLocation){
-        $('#navBar').css('position', 'fixed').css('background', 'rgba(8,9,10,0.8)');
-        $rootScope.currentPage = 'contactPageLocation';
-      } else if(currentPosition >= position.costPageLocation){
-        $('#navBar').css('position', 'fixed').css('background', 'rgba(8,9,10,0.8)');
-        $rootScope.currentPage = 'costPageLocation';
-        $timeout(() => {
-          this[data['navigation'][this.findIndexOfCurrentPage()]['animation']]();
-        }, $rootScope.pageScrollTime - 5)
-      } else if((currentPosition >= position.servicePageLocation) || (currentPosition >= position.navPosition)){
-        $('#navBar').css('position', 'fixed').css('background', 'rgba(8,9,10,0.8)');
-        $rootScope.currentPage = 'servicePageLocation';
-      } else if(currentPosition >= position.homePageLocation){
-        $('#navBar').css('position', 'relative').css('background', 'transparent');
-        $rootScope.currentPage = 'homePageLocation';
-      }
+      const currentPage = this.indentifyCurrentPage();
+      (currentPage === 'homePageLocation') ? this.showNavigationAtBottom() : this.showNavigationAtTop();
+      this.setCurrentPage(currentPage);
+      this.techBarAnimationOnPage(currentPage);
+      console.log(currentPage);
     })
   }
   //navigation click
@@ -184,6 +213,9 @@ app.service('task', function($rootScope, $interval, $timeout, data){
       }, timeout);
     }
   }
+  this.none = () => {
+    console.log($rootScope.currentPage);
+  }
   //find index of current page
   this.findIndexOfCurrentPage = () => {
     let currentPageIndex;
@@ -196,6 +228,7 @@ app.service('task', function($rootScope, $interval, $timeout, data){
   }
   //go up one page
   this.goUp = () => {
+    debugger
     const indexToGoTo = this.findIndexOfCurrentPage() - 1;
     if(indexToGoTo >= 0){
       this.goTo(data['navigation'][indexToGoTo]['pageLocation']);
@@ -203,6 +236,7 @@ app.service('task', function($rootScope, $interval, $timeout, data){
   }
   //go down one page
   this.goDown = () => {
+    debugger
     const indexToGoTo = this.findIndexOfCurrentPage() + 1;
     if(indexToGoTo < data['navigation'].length){
       this.goTo(data['navigation'][indexToGoTo]['pageLocation']);
@@ -258,9 +292,9 @@ app.service('data', function($rootScope, $interval, $timeout){
   };
   //navigation options
   this.navigation = [
-    { navBarName: 'HOME',     pageLocation: 'homePageLocation',    animation: '' },
-    { navBarName: 'SERVICES', pageLocation: 'servicePageLocation', animation: '' },
+    { navBarName: 'HOME',     pageLocation: 'homePageLocation',    animation: 'none' },
+    { navBarName: 'SERVICES', pageLocation: 'servicePageLocation', animation: 'none' },
     { navBarName: 'COST',     pageLocation: 'costPageLocation',    animation: 'techBarCostAnimation' },
-    { navBarName: 'CONTACT',  pageLocation: 'contactPageLocation', animation: '' }
+    { navBarName: 'CONTACT',  pageLocation: 'contactPageLocation', animation: 'none' }
   ];
 });

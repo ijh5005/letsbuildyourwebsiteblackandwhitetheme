@@ -178,20 +178,21 @@
               <p>{{iconObj.description}}</p>
             </div>
           </div>
-        </div>
-
-        <!-- maintenance -->
-        <div id="maintenancePage" class="fullWidth flexCol">
-          <div class="costMainenance">
-            <p>MAINTENANCE</p>
-          </div>
-          <div class="fullWidth h50 flexRow textSection">
-            <div class="" ng-repeat='service in data["page"]["maintenance"] track by $index'>
-              <p class="textSectionHeading">{{service['heading']}}</p>
-              <p class="textSectionBody">{{service['body']}}</p>
+          <!-- maintenance -->
+          <div id="maintenancePage" class="fullWidth flexCol">
+            <div class="costMainenance">
+              <p>MAINTENANCE</p>
+            </div>
+            <div class="fullWidth h50 flexRow textSection">
+              <div class="" ng-repeat='service in data["page"]["maintenance"] track by $index'>
+                <p class="textSectionHeading">{{service['heading']}}</p>
+                <p class="textSectionBody">{{service['body']}}</p>
+              </div>
             </div>
           </div>
         </div>
+
+
 
         <!-- contact page -->
         <div id="contactPageLocation" class=""></div>
@@ -235,7 +236,7 @@
             <p class="arrowTop">&#x2934;</p>
           </div>
 
-          <div class="techHomePage">
+          <div class="techHomePage none">
             <div class="flexCol">
               <div class="">
 
