@@ -1,0 +1,34 @@
+#bname p, .pageRedBar p {
+    font-size: 5rem;
+}
+
+.pricingBox {
+    height: 18em;
+    width: 16em;
+}
+
+.pricingBox i {
+  display: none;
+}
+
+.costLabel {
+  margin: 0;
+  text-align: center;
+}
+
+.longDescription p {
+  font-size: 1.4em;
+  margin-left: 0;
+}
+
+.costMainenance p {
+  font-size: 3em;
+}
+
+.subCost {
+  font-size: 1.4rem;
+}
+
+.serviceLabel {
+  font-size: 2em;
+}

@@ -1,0 +1,15 @@
+#bname p, .pageRedBar p {
+    font-size: 8rem;
+}
+
+.costMainenance {
+    width: auto;
+}
+
+.costMainenance p {
+    font-size: 4em;
+}
+
+#formSection {
+  display: none;
+}

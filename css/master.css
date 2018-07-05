@@ -407,3 +407,8 @@ textarea:focus {
 .arrowBottom {
   margin-bottom: 2em;
 }
+
+.playBox {
+  height: 4em;
+  background-color: #fff;
+}

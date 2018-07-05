@@ -164,10 +164,16 @@ app.service('task', function($rootScope, $interval, $timeout, data){
   }
   //switch techbar animation
   this.techBarAnimationOnPage = (currentPage) => {
-    if(currentPage === 'costPageLocation'){
+    if (currentPage === 'homePageLocation') {
+      console.log('homePageLocation');
+    } else if(currentPage === 'servicePageLocation'){
+      console.log('servicePageLocation');
+    } else if(currentPage === 'costPageLocation'){
       $timeout(() => {
         this[data['navigation'][this.findIndexOfCurrentPage()]['animation']]();
-      }, $rootScope.pageScrollTime - 5)
+      }, $rootScope.pageScrollTime - 5);
+    } else if (currentPage === 'contactPageLocation') {
+      console.log('contactPageLocation');
     }
   }
   //indentify which page we are on
@@ -228,7 +234,6 @@ app.service('task', function($rootScope, $interval, $timeout, data){
   }
   //go up one page
   this.goUp = () => {
-    debugger
     const indexToGoTo = this.findIndexOfCurrentPage() - 1;
     if(indexToGoTo >= 0){
       this.goTo(data['navigation'][indexToGoTo]['pageLocation']);
@@ -236,7 +241,6 @@ app.service('task', function($rootScope, $interval, $timeout, data){
   }
   //go down one page
   this.goDown = () => {
-    debugger
     const indexToGoTo = this.findIndexOfCurrentPage() + 1;
     if(indexToGoTo < data['navigation'].length){
       this.goTo(data['navigation'][indexToGoTo]['pageLocation']);
