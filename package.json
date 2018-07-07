@@ -1,31 +1,22 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.3.0",
-  "description": "A sample Node.js app using Express 4",
+  "name": "expressstarter",
+  "version": "1.0.0",
   "engines": {
-    "node": "8.9.1"
+    "node": "8.9.1",
+    "npm": "5.6.0"
   },
-  "main": "index.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
+  "author": "Isaiah Harrison",
+  "license": "ISC",
   "dependencies": {
-    "ejs": "^2.5.6",
-    "express": "^4.15.2"
-  },
-  "devDependencies": {
-    "request": "^2.81.0",
-    "tape": "^4.7.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ijh5005/letsbuildyourwebsiteblackandwhitetheme"
-  },
-  "keywords": [
-    "letsbuildyourwebsite",
-    "website maker",
-    "Isaiah Harrison"
-  ],
-  "license": "MIT"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.5",
+    "twilio": "^3.17.5"
+  }
 }
