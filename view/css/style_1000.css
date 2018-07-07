@@ -1,0 +1,13 @@
+#navBar {
+  display: none;
+}
+
+#bname p,
+.pageRedBar p {
+  font-size: 10rem;
+}
+
+.textSection div {
+  margin-top: 5em;
+  width: 15em;
+}

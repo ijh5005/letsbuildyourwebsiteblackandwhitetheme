@@ -20,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/ijh5005/letsbuildyourwebsiteblackandwhitetheme"
   },
   "keywords": [
-    "node",
-    "heroku",
-    "express"
+    "letsbuildyourwebsite",
+    "website maker",
+    "Isaiah Harrison"
   ],
   "license": "MIT"
 }
