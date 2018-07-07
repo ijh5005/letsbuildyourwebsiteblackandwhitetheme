@@ -11,7 +11,7 @@
     "start": "node index.js"
   },
   "author": "Isaiah Harrison",
-  "license": "ISC",
+  "license": "letsbuildyourwebsite",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
@@ -26,6 +26,5 @@
     "website maker",
     "letsbuildyourwebsite",
     "Isaiah Harrison"
-  ],
-  "license": "letsbuildyourwebsite"
+  ]
 }
