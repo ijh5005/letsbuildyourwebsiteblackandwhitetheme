@@ -1,10 +1,8 @@
 {
-  "name": "letsbuildyourwebsite",
-  "description": "website building",
-  "keywords": [
-    "letsbuildyourwebsite",
-    "website",
-    "Isaiah Harrison"
-  ],
+  "name": "Lets Build Your Website",
+  "description": "Website Builder",
   "repository": "https://github.com/ijh5005/letsbuildyourwebsiteblackandwhitetheme",
+  "logo": "",
+  "keywords": ["website", "letsbuildyourwebsite", "Isaiah Harrison"],
+  "image": ""
 }
