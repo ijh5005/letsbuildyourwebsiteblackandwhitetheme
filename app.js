@@ -5,7 +5,7 @@ app.use(express.static(__dirname + '/view'));
 
 const path = require('path');
 //set the port
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 //twilio
 const accountSid = 'AC93d2af277ae58e64e46168894dcf38a1';
@@ -39,6 +39,4 @@ app.post('/sendText', (req, res, next) => {
         .done();
 })
 
-app.listen(PORT);
-
-console.log('running on port: ' + PORT);
+app.listen(PORT, () => console.log(`running on port ${PORT}`););
