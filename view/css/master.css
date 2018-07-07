@@ -87,6 +87,7 @@ textarea:focus {
   height: 100%;
   margin-left: 14rem;
   z-index: 2;
+  pointer-events: none;
 }
 
 #bname p {
@@ -442,7 +443,7 @@ textarea:focus {
   position: absolute;
   top: 10%;
   width: 60em;
-  z-index: 10;
+  z-index: -10;
 }
 
 #videoBoxContainer {
@@ -454,4 +455,9 @@ textarea:focus {
 #techHomePage.hideRight {
   position: relative;
   left: 100%;
+}
+
+#serviceText,
+#costText {
+  color: var(--red);
 }

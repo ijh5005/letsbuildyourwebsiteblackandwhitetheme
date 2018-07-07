@@ -22,7 +22,7 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   $rootScope.resetHomeVideoScreenPosition;
   //prepare the url to be compatible with youtube
   $scope.fixUrl = (url) => {
-    return url.replace('watch?v=', 'embed/')
+    return url.replace('watch?v=', 'embed/') + '?rel=0&autoplay=1&mute=1&controls=0';
   }
   //display the video for the sample works
   $scope.clickSampleBox = (index) => {
@@ -81,6 +81,8 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
     task.stickyNavigation();
     //set the current page
     task.setCurrentPage(task.indentifyCurrentPage());
+    //set current page animation
+    task[data['navigation'][task.findIndexOfCurrentPage()]['animation']]();
   })
 }]);
 
@@ -88,15 +90,17 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
 app.service('task', function($rootScope, $interval, $timeout, $http, data){
   //display the video for the sample works
   this.clickSampleBox = (scope, index) => {
+    //bring videoBox above page content
+    $('#videoBox').css('zIndex', 10)
     //turn the video box
     $('#videoBoxContainer').css('transform', 'rotateX(0deg)');
     //request the youtube video
     $('#homeVideoBox').attr('src', scope.fixUrl(data['homeTechData'][index]['video']));
     //reset the video box position reset time
-    $timeout.cancel($rootScope.resetHomeVideoScreenPosition);
-    $rootScope.resetHomeVideoScreenPosition = $timeout(() => {
-      $('#videoBoxContainer').css('transform', 'rotateX(90deg)');
-    }, 6000);
+    // $timeout.cancel($rootScope.resetHomeVideoScreenPosition);
+    // $rootScope.resetHomeVideoScreenPosition = $timeout(() => {
+    //   $('#videoBoxContainer').css('transform', 'rotateX(90deg)');
+    // }, 80000);
   }
   //set the page content
   this.setPageContent = () => {
@@ -192,17 +196,10 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
   }
   //switch techbar animation
   this.techBarAnimationOnPage = (currentPage) => {
-    if (currentPage === 'homePageLocation') {
-      $('#techHomePage').css('left', '0%')
-    } else if(currentPage === 'servicePageLocation'){
-      console.log('servicePageLocation');
-    } else if(currentPage === 'costPageLocation'){
-      $timeout(() => {
-        this[data['navigation'][this.findIndexOfCurrentPage()]['animation']]();
-      }, $rootScope.pageScrollTime - 5);
-    } else if (currentPage === 'contactPageLocation') {
-      console.log('contactPageLocation');
-    }
+    this[data['navigation'][this.findIndexOfCurrentPage()]['animation']]();
+    $timeout(() => {
+      this[data['navigation'][this.findIndexOfCurrentPage()]['animation']]();
+    }, $rootScope.pageScrollTime - 5);
   }
   //indentify which page we are on
   this.indentifyCurrentPage = () => {
@@ -237,6 +234,15 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
     const position = $(`#${pageLocation}`).position().top;
     $("body, html").animate({ scrollTop: position }, $rootScope.pageScrollTime);
   }
+
+  //home page tech bar animation
+  this.techBarHomeAnimation = () => {
+    $('.techHomePage div').fadeIn('slow');
+  }
+  //home page tech bar animation
+  this.techBarServiceAnimation = () => {
+    $('#serviceText').fadeIn('slow');
+  }
   //cost page tech bar animation
   this.techBarCostAnimation  = () => {
     const $icons = document.querySelectorAll('.techCost i');
@@ -247,9 +253,11 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
       }, timeout);
     }
   }
-  this.none = () => {
-    console.log($rootScope.currentPage);
+  //home page tech bar animation
+  this.techBarContactAnimation = () => {
+    $('#costText').fadeIn('slow');
   }
+
   //find index of current page
   this.findIndexOfCurrentPage = () => {
     let currentPageIndex;
@@ -346,10 +354,10 @@ app.service('data', function($rootScope, $interval, $timeout){
   };
   //navigation options
   this.navigation = [
-    { navBarName: 'HOME',     pageLocation: 'homePageLocation',    animation: 'none' },
-    { navBarName: 'SERVICES', pageLocation: 'servicePageLocation', animation: 'none' },
+    { navBarName: 'HOME',     pageLocation: 'homePageLocation',    animation: 'techBarHomeAnimation' },
+    { navBarName: 'SERVICES', pageLocation: 'servicePageLocation', animation: 'techBarServiceAnimation' },
     { navBarName: 'COST',     pageLocation: 'costPageLocation',    animation: 'techBarCostAnimation' },
-    { navBarName: 'CONTACT',  pageLocation: 'contactPageLocation', animation: 'none' }
+    { navBarName: 'CONTACT',  pageLocation: 'contactPageLocation', animation: 'techBarContactAnimation' }
   ];
   //home tech bar info
   this.homeTechData = [
