@@ -22,7 +22,7 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   $rootScope.resetHomeVideoScreenPosition;
   //prepare the url to be compatible with youtube
   $scope.fixUrl = (url) => {
-    return url.replace('watch?v=', 'embed/') + '?rel=0&autoplay=1&mute=1&controls=0';
+    return url.replace('watch?v=', 'embed/') + '?rel=0&mute=1&controls=0';
   }
   //display the video for the sample works
   $scope.clickSampleBox = (index) => {
