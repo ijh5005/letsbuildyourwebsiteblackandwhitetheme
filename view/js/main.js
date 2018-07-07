@@ -70,6 +70,10 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   $scope.sendText = () => {
     task.sendText();
   }
+  //hide the video box
+  $scope.hideoVideoBox = () => {
+    task.hideoVideoBox();
+  }
   //start the homepage animation
   task.startHomePageAnimation();
   //set the page content
@@ -303,6 +307,11 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
       }, function errorCallback(response) {
         console.log('message not sent');
       });
+  }
+  //hide the video box
+  this.hideoVideoBox = () => {
+    $('#videoBox').css('zIndex', -10);
+    $('#videoBoxContainer').css('transform', 'rotateX(90deg)');
   }
 });
 
