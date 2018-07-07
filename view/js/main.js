@@ -66,6 +66,10 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   $scope.goDown = () => {
     task.goDown();
   }
+  //send text message
+  $scope.sendText = () => {
+    task.sendText();
+  }
   //start the homepage animation
   task.startHomePageAnimation();
   //set the page content
@@ -81,7 +85,7 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
 }]);
 
 
-app.service('task', function($rootScope, $interval, $timeout, data){
+app.service('task', function($rootScope, $interval, $timeout, $http, data){
   //display the video for the sample works
   this.clickSampleBox = (scope, index) => {
     //turn the video box
@@ -270,6 +274,28 @@ app.service('task', function($rootScope, $interval, $timeout, data){
       this.goTo(data['navigation'][indexToGoTo]['pageLocation']);
     }
   }
+  //send text message
+  this.sendText = () => {
+    const url = 'http://localhost:3000/sendText';
+    const name = document.getElementById('name').value;
+    const contact = document.getElementById('contact').value;
+    const message = document.getElementById('message').value;
+    const textMessage = `Hi, my name is ${name}. You can reach me at ${contact}, Message: ${message}`;
+    const data = { message: textMessage };
+    $http({
+      method: 'POST',
+      url: url,
+      data: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' }
+    }).then(function successCallback(response) {
+        document.getElementById('name').value = '';
+        document.getElementById('contact').value = '';
+        document.getElementById('message').value = 'Your message has been sent. Thank you';
+        console.log('message sent');
+      }, function errorCallback(response) {
+        console.log('message not sent');
+      });
+  }
 });
 
 app.service('data', function($rootScope, $interval, $timeout){
@@ -327,7 +353,7 @@ app.service('data', function($rootScope, $interval, $timeout){
   ];
   //home tech bar info
   this.homeTechData = [
-    { img: 'background-image: url(./img/WPP.png)', video: 'https://www.youtube.com/watch?v=56sz0yIHGCc' },
-    { img: 'background-image: url(./img/NBR.png)', video: 'https://www.youtube.com/watch?v=U3OX2OPKJW0' }
+    { img: 'background-image: url(./img/WPP.png)', video: 'https://www.youtube.com/embed/8eOD_x1Z59E' },
+    { img: 'background-image: url(./img/NBR.png)', video: 'https://www.youtube.com/embed/YKzIogzt8-o' }
   ]
 });

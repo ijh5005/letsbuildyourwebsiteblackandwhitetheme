@@ -10,6 +10,9 @@
   "author": "Isaiah Harrison",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.5",
+    "twilio": "^3.17.5"
   }
 }

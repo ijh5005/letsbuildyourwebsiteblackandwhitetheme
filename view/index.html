@@ -218,12 +218,12 @@
               <div id="formSection" class="fullHeight">
                 <form class="" action="index.html" method="post">
                   <div id="userInfo" class="flexRow">
-                    <input type="text" name="name" value="" placeholder="Name">
-                    <input type="text" name="email" value="" placeholder="Email">
+                    <input id="name" type="text" name="name" value="" placeholder="Name">
+                    <input id="contact" type="text" name="email" value="" placeholder="Email">
                   </div>
-                  <textarea name="feedback" rows="8" cols="80" placeholder="Message"></textarea>
+                  <textarea id="message" name="feedback" rows="8" cols="80" placeholder="Message"></textarea>
                 </form>
-                <div id="sendBtn" class="flexRow pointer">
+                <div id="sendBtn" class="flexRow pointer" ng-click='sendText()'>
                   <p>SEND</p>
                 </div>
               </div>
@@ -247,7 +247,7 @@
           </div>
 
           <div class="techHomePage fullSize" ng-if='currentPage === "homePageLocation"'>
-            <div class="flexCol fullSize">
+            <div class="flexCol fullWidth">
               <div class="homeTechTitle">
                 <p>SAMPLE WORK</p>
               </div>
