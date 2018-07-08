@@ -288,7 +288,7 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
   }
   //send text message
   this.sendText = () => {
-    const url = 'http://localhost:3000/sendText';
+    const url = 'http://letsbuildyourwebsite.com/sendText';
     const name = document.getElementById('name').value;
     const contact = document.getElementById('contact').value;
     const message = document.getElementById('message').value;
