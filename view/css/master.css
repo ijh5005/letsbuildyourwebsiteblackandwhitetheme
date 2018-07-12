@@ -130,7 +130,6 @@ textarea:focus {
 .pageName {
   letter-spacing: 3px;
   margin: 0 1.4em;
-  opacity: 0.6;
 }
 
 .pageNumber {
@@ -149,7 +148,7 @@ textarea:focus {
 }
 
 .pageRedBar p {
-  font-size: 16em;
+  font-size: 12em;
   font-weight: bolder;
   opacity: 0.2;
 }
@@ -198,6 +197,7 @@ textarea:focus {
   overflow: hidden;
   position: relative;
   width: 30em;
+  user-select: none;
 }
 
 .pricingBox i {
@@ -238,9 +238,9 @@ textarea:focus {
 }
 
 .costLabel {
-  font-size: 8em;
+  font-size: 6em;
   line-height: 0.8;
-  margin: 0.4em 0em 0 0.6em;
+  margin: 0.4em 0em 0 1em;
   opacity: 0.6;
 }
 
