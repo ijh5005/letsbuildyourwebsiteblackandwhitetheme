@@ -324,24 +324,15 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
       cellPosition: 'A2',
       cellText: 'heyjhgfdhey'
     };
-    $http({
-      method: 'POST',
+
+    $.ajax({
       url: url,
-      data: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-    }).then(function successCallback(response) {
-        console.log(response);
-      }, function errorCallback(response) {
-        console.log('message not sent');
-      });
-    // $http({
-    //   method: 'GET',
-    //   url: url,
-    // }).then(function successCallback(response) {
-    //     console.log(response);
-    //   }, function errorCallback(response) {
-    //     console.log('message not sent');
-    //   });
+      method: 'POST',
+      data: data,
+      success: function (data) {
+        console.log(data)
+      }
+    })
   }
 });
 
