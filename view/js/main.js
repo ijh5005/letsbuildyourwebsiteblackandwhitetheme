@@ -78,6 +78,10 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   task.startHomePageAnimation();
   //set the page content
   task.setPageContent();
+  //request the application data
+  $scope.requestData = () => {
+    task.requestData();
+  }
   //set scroll speed of webpage
   task.setScrollSpeed();
   $timeout(() => {
@@ -312,6 +316,32 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
   this.hideoVideoBox = () => {
     $('#videoBox').css('zIndex', -10);
     $('#videoBoxContainer').css('transform', 'rotateX(90deg)');
+  }
+  //request the application data
+  this.requestData = () => {
+    const url = 'https://script.google.com/macros/s/AKfycbwL6rplZJgFMJ0uSIdIFeWh-ku9HwJUyQ2puvXjrAhod0zrGjMu/exec';
+    const data = {
+      cellPosition: 'A2',
+      cellText: 'heyjhgfdhey'
+    };
+    $http({
+      method: 'POST',
+      url: url,
+      data: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    }).then(function successCallback(response) {
+        console.log(response);
+      }, function errorCallback(response) {
+        console.log('message not sent');
+      });
+    // $http({
+    //   method: 'GET',
+    //   url: url,
+    // }).then(function successCallback(response) {
+    //     console.log(response);
+    //   }, function errorCallback(response) {
+    //     console.log('message not sent');
+    //   });
   }
 });
 
