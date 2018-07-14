@@ -86,8 +86,8 @@ textarea:focus {
 #bname {
   height: 100%;
   margin-left: 14rem;
-  z-index: 2;
   pointer-events: none;
+  z-index: 2;
 }
 
 #bname p {
@@ -177,6 +177,7 @@ textarea:focus {
 
 .costMainenance p {
   font-size: 6em;
+  font-weight: bold;
   margin-bottom: 0;
   margin-top: 4rem;
 }
@@ -197,8 +198,8 @@ textarea:focus {
   margin: 1em;
   overflow: hidden;
   position: relative;
-  width: 30em;
   user-select: none;
+  width: 30em;
 }
 
 .pricingBox i {
@@ -369,7 +370,7 @@ textarea:focus {
 
 #techBar {
   background-color: var(--techBar);
-  justify-content: space-between;
+  justify-content: flex-start;
   position: fixed;
   width: 8em;
   z-index: 5;
@@ -392,7 +393,7 @@ textarea:focus {
 }
 
 .arrowContainer {
-  height: 4em;
+  height: 6em;
   opacity: 0.6;
 }
 
@@ -454,8 +455,8 @@ textarea:focus {
 }
 
 #techHomePage.hideRight {
-  position: relative;
   left: 100%;
+  position: relative;
 }
 
 #serviceText,

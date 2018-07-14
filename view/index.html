@@ -186,10 +186,10 @@
           </div>
           <!-- maintenance -->
           <div id="maintenancePage" class="fullWidth flexCol">
-            <div class="costMainenance">
+            <div class="costMainenance flexRow">
               <p>MAINTENANCE</p>
             </div>
-            <div class="fullWidth h50 flexRow textSection">
+            <div class="h50 flexRow textSection">
               <div class="" ng-repeat='service in data["page"]["maintenance"] track by $index'>
                 <p class="textSectionHeading">{{service['heading']}}</p>
                 <p class="textSectionBody">{{service['body']}}</p>
@@ -246,7 +246,11 @@
             <p class="arrowTop">&#x2934;</p>
           </div>
 
-          <div class="techHomePage fullWidth h80" ng-if='currentPage === "homePageLocation"'>
+          <div class="arrowContainer fullWidth flexRow pointer" ng-click='goDown()'>
+            <p class="arrowBottom">&#x2935;</p>
+          </div>
+
+          <div class="techHomePage fullWidth" ng-if='currentPage === "homePageLocation"'>
             <div class="flexCol fullWidth none">
               <div class="homeTechTitle">
                 <p>SAMPLE WORK</p>
@@ -290,10 +294,6 @@
               <div class=""><p>C</p></div>
               <div class=""><p>T</p></div>
             </div>
-          </div>
-
-          <div class="arrowContainer fullWidth flexRow pointer" ng-click='goDown()'>
-            <p class="arrowBottom">&#x2935;</p>
           </div>
         </div>
       </div>

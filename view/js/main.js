@@ -371,10 +371,9 @@ app.service('data', function($rootScope, $interval, $timeout){
             { service: 'Transaction Setup', icon: 'fas fa-credit-card'  , cost: '$80', sub: '',       description: 'Earn money. This service includes a shopping cart page so you can sell you products. Also, a third party payment service is linked directly to your bank card.' },
             { service: 'Athentication',     icon: 'fas fa-sign-in-alt'  , cost: '$50', sub: '',       description: 'Have a user sign in to your website optionally. This helps build a personal relationship with your customers and speeds the checkout process' },
             { service: 'Animations',        icon: 'fas fa-fighter-jet'  , cost: '$50', sub: '',       description: 'Includes custom animations to help your website stand out and build a smooth customer experience.' },
-            { service: 'Email Form',        icon: 'fas fa-at'           , cost: '$50', sub: '',       description: 'Email your customers this week\'s promotions. This includes a reusable email template ready to send to all customers.' },
-            { service: 'Text Form',         icon: 'fas fa-mobile'       , cost: '$50', sub: '',       description: 'Text your customers appointment reminders. Texting has become a primary source of communication.' },
-            { service: 'Contact Form',      icon: 'fas fa-phone'        , cost: '$25', sub: '',       description: 'This form is a convenient way for customers to contact you.' },
-            { service: 'Feedback Form',     icon: 'fas fa-pencil-alt'   , cost: '$25', sub: '',       description: 'This form is a convenient way for customers to leave feedback.' }
+            { service: 'Email Application',        icon: 'fas fa-at'           , cost: '$50', sub: '',       description: 'Email your customers this week\'s promotions. This includes a reusable email template ready to send to all customers.' },
+            { service: 'Text Application',         icon: 'fas fa-mobile'       , cost: '$50', sub: '',       description: 'Text your customers appointment reminders. Texting has become a primary source of communication.' },
+            { service: 'Contact Form',      icon: 'fas fa-phone'        , cost: '$25', sub: '',       description: 'This form is a convenient way for customers to contact you.' }
           ]
         }
       ],
