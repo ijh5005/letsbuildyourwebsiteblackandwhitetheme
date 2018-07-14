@@ -148,9 +148,9 @@
           </div>
           <div id="navBar" class="fullWidth flexRow">
             <div id="navBtns" class="flexRow fullHeight pointer" ng-repeat='navigationOption in navigation track by $index'>
-              <div class="navBtn flexRow fullHeight" ng-click='goTo(navigationOption.pageLocation)'>
+              <div data={{$index}} class="navBtn flexRow fullHeight" ng-click='goTo(navigationOption.pageLocation)'>
                 <p class="pageName">{{navigationOption.navBarName}}</p>
-                <p class="pageNumber">{{navigationNumberLable($index)}}</p>
+                <p data={{$index}} class="pageNumber">{{navigationNumberLable($index)}}</p>
               </div>
             </div>
           </div>

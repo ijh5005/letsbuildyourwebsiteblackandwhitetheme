@@ -13,3 +13,7 @@
 #formSection {
   display: none;
 }
+
+#costPage {
+  background-image: url('../img/blurSmall.png');
+}

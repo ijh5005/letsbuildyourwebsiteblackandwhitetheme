@@ -9,7 +9,8 @@
 .playBox,
 #videoBox,
 #videoBoxContainer,
-#techHomePage {
+#techHomePage,
+.pageNumber {
   transition: all 0.5s;
 }
 
@@ -45,8 +46,13 @@
   background-color: #215e5e;
 }
 
-.navBtn:hover {
-  color: var(--lightRed);
+.navBtn:hover,
+.navBtnHover {
+  color: var(--red);
+}
+
+.whiteText {
+  font-size: 1.8em;
 }
 
 .pricingBox:hover i {

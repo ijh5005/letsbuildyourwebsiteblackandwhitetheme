@@ -29,7 +29,7 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
     task.clickSampleBox($scope, index);
   }
   //navigation options
-  $scope.navigation = data.navigation;
+  $rootScope.navigation = data.navigation;
   //navigation number label
   $scope.navigationNumberLable = (index) => {
     return `/0${parseInt(index) + 1}`;
@@ -201,6 +201,7 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
   //set the current page
   this.setCurrentPage = (currentPage) => {
     $rootScope.currentPage = currentPage;
+    this.addNavPageHighlight(currentPage);
   }
   //switch techbar animation
   this.techBarAnimationOnPage = (currentPage) => {
@@ -234,8 +235,16 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
       (currentPage === 'homePageLocation') ? this.showNavigationAtBottom() : this.showNavigationAtTop();
       this.setCurrentPage(currentPage);
       this.techBarAnimationOnPage(currentPage);
-      console.log(currentPage);
+      this.addNavPageHighlight(currentPage);
     })
+  }
+  //add a highlight to the navigation on page switch
+  this.addNavPageHighlight = (currentPage) => {
+    const index = $rootScope.navigation.findIndex(data => data['pageLocation'] === currentPage);
+    $('.navBtn').removeClass('navBtnHover');
+    $(`.navBtn[data=${index}]`).addClass('navBtnHover');
+    $('.pageNumber').removeClass('whiteText');
+    $(`.pageNumber[data=${index}]`).addClass('whiteText');
   }
   //navigation click
   this.goTo = (pageLocation) => {

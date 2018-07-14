@@ -145,6 +145,7 @@ textarea:focus {
 .pageRedBar {
   background-color: var(--red);
   color: #fff;
+  user-select: none;
 }
 
 .pageRedBar p {
@@ -459,5 +460,5 @@ textarea:focus {
 
 #serviceText,
 #costText {
-  color: var(--red);
+  color: var(--lighterRed);
 }
