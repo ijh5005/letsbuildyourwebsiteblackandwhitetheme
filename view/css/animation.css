@@ -10,7 +10,9 @@
 #videoBox,
 #videoBoxContainer,
 #techHomePage,
-.pageNumber {
+.pageNumber,
+#techBarContainer,
+#homeText p {
   transition: all 0.5s;
 }
 
@@ -19,12 +21,15 @@
 }
 
 #screen > *,
-#loginBox {
+#loginBox,
+#sampleWork {
   transition: all 1s;
 }
 
 .serviceSecctionBox,
-.playBox:hover > div {
+.playBox:hover > div,
+.videoDescriptionBar,
+.playBtn i {
   transition: all 0.2s;
 }
 
@@ -130,4 +135,22 @@
 
 .playBox:hover > div {
   left: 0%;
+}
+
+.videoSelection:hover > .videoDescriptionBar {
+  bottom: -0.1rem;
+}
+
+.videoSelection:hover > .playBtn i {
+  opacity: 0.8;
+  color: var(--red);
+}
+
+#sampleWork.showSamples {
+  right: 8rem;
+  display: block;
+}
+
+.playBtn i {
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

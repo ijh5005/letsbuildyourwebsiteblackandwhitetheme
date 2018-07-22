@@ -6,7 +6,8 @@
     width: auto;
 }
 
-.costMainenance p {
+.costMainenance p,
+#costHeading p {
     font-size: 4em;
 }
 

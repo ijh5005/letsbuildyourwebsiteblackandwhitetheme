@@ -36,6 +36,7 @@ app.post('/sendText', (req, res, next) => {
           console.log(message.sid);
           res.status(200).send();
         })
+        .catch(err => res.json(err))
         .done();
 })
 

@@ -14,10 +14,8 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   $rootScope.homeTechBarData = data.homeTechData;
   //page scroll time
   $rootScope.pageScrollTime = 1000;
-  //techbar animation tracker
-  $rootScope.techBarAnimationDoneFor = {
-    cost: false
-  }
+  //is the samples page open
+  $rootScope.samplesOpen = false;
   //used to reset the home page video box position
   $rootScope.resetHomeVideoScreenPosition;
   //prepare the url to be compatible with youtube
@@ -42,8 +40,6 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   $scope.iconClass = (iconObj) => {
     return iconObj['icon'];
   }
-  //hide cost page until icons load
-  $scope.showCostPage = true;
   //tech page contact method
   $scope.hoverTechPageCostIcon = (index) => {
     const scrollPosition = $(`#costPage div[data="${index}"`).position().top - 60;
@@ -82,8 +78,26 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   $scope.requestData = () => {
     task.requestData();
   }
+  //show sample work
+  $scope.showSampleWork = () => {
+    $rootScope.samplesOpen = true;
+    task.showSamples();
+  }
   //set scroll speed of webpage
   task.setScrollSpeed();
+  $scope.startBounce = () => {
+    const bounce = $interval(() => {
+      console.log('hey');
+      if(!$rootScope.samplesOpen){
+        $('#homeTextPlayBtn').toggleClass('bounce');
+        $('#homeTextPlayBtn').toggleClass('animated');
+        $('#homeTextPlayBtnSmallScreen').toggleClass('bounce');
+        $('#homeTextPlayBtnSmallScreen').toggleClass('animated');
+      } else {
+        $interval.cancel(bounce);
+      }
+    }, 1000)
+  }
   $timeout(() => {
     //check sticky navigation bar
     task.stickyNavigation();
@@ -91,24 +105,20 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
     task.setCurrentPage(task.indentifyCurrentPage());
     //set current page animation
     task[data['navigation'][task.findIndexOfCurrentPage()]['animation']]();
+    $scope.startBounce();
+    $('#homeText > *').css('opacity', 0);
   })
+  $timeout(() => {
+    $('#homeText > *').css('transition', 'all 1s').css('opacity', 1);
+  }, 4000);
 }]);
 
 
 app.service('task', function($rootScope, $interval, $timeout, $http, data){
   //display the video for the sample works
   this.clickSampleBox = (scope, index) => {
-    //bring videoBox above page content
-    $('#videoBox').css('zIndex', 10)
-    //turn the video box
-    $('#videoBoxContainer').css('transform', 'rotateX(0deg)');
     //request the youtube video
     $('#homeVideoBox').attr('src', scope.fixUrl(data['homeTechData'][index]['video']));
-    //reset the video box position reset time
-    // $timeout.cancel($rootScope.resetHomeVideoScreenPosition);
-    // $rootScope.resetHomeVideoScreenPosition = $timeout(() => {
-    //   $('#videoBoxContainer').css('transform', 'rotateX(90deg)');
-    // }, 80000);
   }
   //set the page content
   this.setPageContent = () => {
@@ -323,8 +333,7 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
   }
   //hide the video box
   this.hideoVideoBox = () => {
-    $('#videoBox').css('zIndex', -10);
-    $('#videoBoxContainer').css('transform', 'rotateX(90deg)');
+    $('#sampleWork').toggleClass('showSamples');
   }
   //request the application data
   this.requestData = () => {
@@ -342,6 +351,9 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
         console.log(data)
       }
     })
+  }
+  this.showSamples = () => {
+    $('#sampleWork').toggleClass('showSamples');
   }
 });
 
@@ -399,7 +411,7 @@ app.service('data', function($rootScope, $interval, $timeout){
   ];
   //home tech bar info
   this.homeTechData = [
-    { img: 'background-image: url(./img/WPP.png)', video: 'https://www.youtube.com/embed/8eOD_x1Z59E' },
-    { img: 'background-image: url(./img/NBR.png)', video: 'https://www.youtube.com/embed/YKzIogzt8-o' }
+    { name:'West Phillie Produce', img: 'background-image: url(./img/WPP.png)', video: 'https://www.youtube.com/embed/8eOD_x1Z59E' },
+    { name:'No Baggage Records',   img: 'background-image: url(./img/NBR.png)', video: 'https://www.youtube.com/embed/YKzIogzt8-o' }
   ]
 });

@@ -1,8 +1,26 @@
-#techBarContainer {
+#techBarContainer,
+#logoBar,
+#videoBottomText {
   display: none;
 }
 
 #screenContainer {
   height: 32em;
   width: 48em;
+}
+
+#videoSection,
+#playingVideoSection,
+#videoPlayerListSection {
+  height: 98%;
+}
+
+#sampleWork {
+  height: 30em;
+  width: 68em;
+}
+
+.videoSelection {
+  width: 22em;
+  height: 15em;
 }

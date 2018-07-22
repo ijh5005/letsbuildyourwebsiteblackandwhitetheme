@@ -1,3 +1,8 @@
 .navBtn {
     width: 12em;
 }
+
+#sampleWork,
+#homeTextPlayBtnSmallScreen {
+  display: none;
+}

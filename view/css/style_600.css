@@ -21,7 +21,8 @@
   margin-left: 0;
 }
 
-.costMainenance p {
+.costMainenance p,
+#costHeading p {
   font-size: 3em;
 }
 

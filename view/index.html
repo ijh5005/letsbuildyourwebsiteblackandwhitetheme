@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title></title>
+    <link rel="stylesheet" href="./css/animation2.css">
     <link rel="stylesheet" href="./css/library.css">
     <link rel="stylesheet" href="./css/master.css">
     <link rel="stylesheet" href="./css/animation.css">
@@ -172,11 +173,13 @@
 
         <!-- cost page -->
         <div id="costPageLocation" class=""></div>
-        <div id="costPage" ng-if='showCostPage' class="fullWidth flexRow">
+        <div id="costPage" class="fullWidth flexRow">
+          <div id="costHeading" class="fullWidth">
+            <p>Starting Prices</p>
+          </div>
           <div data={{$index}} class="pricingBox" ng-repeat='iconObj in data.page.costPage["0"].icons track by $index'>
             <i class={{iconClass(iconObj)}}></i>
             <div class="shortDescription fullSize">
-              <p class="startingPrice">starting price</p>
               <p class="costLabel">{{iconObj.cost}}<span class="subCost">{{iconObj.sub}}</span></p>
               <p class="serviceLabel">{{iconObj.service}}</p>
             </div>
@@ -233,12 +236,6 @@
 
       </div>
 
-      <div id="videoBox" class="hideLeft" ng-if='currentPage === "homePageLocation"'>
-        <div id="videoBoxContainer" class="fullSize">
-          <iframe id="homeVideoBox" width="100%" height="100%" src='' frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-
       <div id="techBarContainer" class="fullHeight">
         <div id="techBar" class="fullHeight flexCol">
 
@@ -252,14 +249,23 @@
 
           <div class="techHomePage fullWidth" ng-if='currentPage === "homePageLocation"'>
             <div class="flexCol fullWidth none">
-              <div class="homeTechTitle">
-                <p>SAMPLE WORK</p>
-              </div>
-              <div class="playBox fullWidth" style={{homeData.img}} ng-repeat='homeData in homeTechBarData track by $index' ng-click='clickSampleBox($index)'>
-                <div class="fullSize flexRow">
-                  <i class="fas fa-play"></i>
+
+              <div id="homeText" class="flexCol pointer" ng-click='showSampleWork()'>
+                <p>S</p>
+                <p>A</p>
+                <p>M</p>
+                <p>P</p>
+                <p>L</p>
+                <p>E</p>
+                <div id="homeTextPlayBtn" class="playBtn">
+                  <i class="fab fa-youtube"></i>
                 </div>
+                <p>W</p>
+                <p>O</p>
+                <p>R</p>
+                <p>K</p>
               </div>
+
             </div>
           </div>
 
@@ -298,6 +304,33 @@
         </div>
       </div>
 
+      <div id="sampleWork" class="" ng-if='currentPage === "homePageLocation"'>
+        <div id="logoBar" class="flexRow h20 fullWidth">
+          <div id="logo" class="">
+            <p>LBYW</p>
+          </div>
+        </div>
+        <div id="videoSection" class="flexRow h75 fullWidth">
+          <div id="playingVideoSection" class="h80 w65">
+            <iframe id="homeVideoBox" width="100%" height="100%" src='' frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div id="videoPlayerListSection" class="h80 w35">
+            <div data={{$index}} style={{sampleImg.img}} class="flexRow videoSelection" ng-repeat='sampleImg in homeTechBarData track by $index' ng-click='clickSampleBox($index)'>
+              <div class="playBtn">
+                <i class="fab fa-youtube"></i>
+              </div>
+              <div class="videoDescriptionBar flexRow h20 fullWidth">
+                <p>{{sampleImg.name}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p id="videoBottomText">Lets Build Your Website</p>
+      </div>
+
+      <div id="homeTextPlayBtnSmallScreen" class="playBtn smallScreenPlayBtn" ng-click='showSampleWork()'>
+        <i class="fab fa-youtube"></i>
+      </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
