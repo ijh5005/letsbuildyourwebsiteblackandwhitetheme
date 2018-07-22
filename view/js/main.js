@@ -87,7 +87,6 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   task.setScrollSpeed();
   $scope.startBounce = () => {
     const bounce = $interval(() => {
-      console.log('hey');
       if(!$rootScope.samplesOpen){
         $('#homeTextPlayBtn').toggleClass('bounce');
         $('#homeTextPlayBtn').toggleClass('animated');
