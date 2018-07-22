@@ -67,8 +67,8 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
     task.sendText();
   }
   //hide the video box
-  $scope.hideoVideoBox = () => {
-    task.hideoVideoBox();
+  $scope.hideSampleWork = () => {
+    task.hideSampleWork();
   }
   //start the homepage animation
   task.startHomePageAnimation();
@@ -79,9 +79,16 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
     task.requestData();
   }
   //show sample work
-  $scope.showSampleWork = () => {
-    $rootScope.samplesOpen = true;
-    task.showSamples();
+  $scope.showSampleWork = (delayClick) => {
+    if(delayClick) {
+      $timeout(() => {
+        $rootScope.samplesOpen = true;
+        task.showSamples();
+      })
+    } else {
+      $rootScope.samplesOpen = true;
+      task.showSamples();
+    }
   }
   //set scroll speed of webpage
   task.setScrollSpeed();
@@ -331,8 +338,8 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
       });
   }
   //hide the video box
-  this.hideoVideoBox = () => {
-    $('#sampleWork').toggleClass('showSamples');
+  this.hideSampleWork = () => {
+    $('#sampleWork').removeClass('showSamples');
   }
   //request the application data
   this.requestData = () => {
