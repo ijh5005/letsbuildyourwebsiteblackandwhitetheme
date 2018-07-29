@@ -366,7 +366,7 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
     $('#sampleWork').toggleClass('showSamples');
   }
   this.signUp = () => {
-    window.location = 'http://localhost:3000/signinpage';
+    window.location = 'http://letsbuildyourwebsite.com/signinpage';
   }
 });
 
