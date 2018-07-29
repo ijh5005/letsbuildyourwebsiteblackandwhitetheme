@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="description" content="lets build your website">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Isaiah Harrison">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+
+    <title>letsbuildyourwebsite</title>
+
+    <link rel="stylesheet" href="./css/library.css">
+    <link rel="stylesheet" href="./signin/css/master.css">
+    <link rel="stylesheet" type="text/css" media="only screen and (min-width:768px) and (max-width:980px)" href="css/style_768.css">
+    <link rel="stylesheet" type="text/css" media="only screen and (min-width:600px) and (max-width:767px)" href="css/style_600.css">
+    <link rel="stylesheet" href="./signin/css/animation.css">
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Jaldi:400,700" rel="stylesheet">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+  </head>
+  <body ng-app='app' ng-controller='ctrl' ng-cloak>
+
+    <div id="container" class="flexRow">
+
+      <div id="signInPage" class="fullSize flexRow">
+
+        <div id="signInPageLeft" class="fullHeight w40 flexRow">
+
+          <div id="backBtn" class="pointer" ng-click='backToHome()'>
+            <i class="far fa-arrow-alt-circle-left"></i>
+          </div>
+
+          <div id="leftInner" class="h80 flexCol">
+
+            <p>Let's edit your website</p>
+            <p>Edit content on your website</p>
+
+          </div>
+
+        </div>
+
+        <div id="signInPageRight" class="fullHeight w60 flexRow">
+
+          <div id="rightInner" class="h80 flexRow">
+
+            <div id="signInBox" class="flexCol">
+              <p>{{errorText}}</p>
+              <input id="username" class="pointer" type="text" name="" value="" placeholder="username">
+              <input id="password" class="pointer" type="password" name="" value="" placeholder="password">
+              <div id="submitBtn" class="pointer flexRow" ng-click='submit()'>
+                <p>Submit</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="./signin/js/main.js"></script>
+  </body>
+</html>

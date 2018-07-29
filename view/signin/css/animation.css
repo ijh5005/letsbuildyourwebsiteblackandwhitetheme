@@ -1,0 +1,12 @@
+#submitBtn,
+#submitBtn > * {
+  transition: all 0.5s;
+}
+
+#submitBtn:hover {
+  background-color: var(--red);
+}
+
+#submitBtn:hover > * {
+  opacity: 0.6;
+}

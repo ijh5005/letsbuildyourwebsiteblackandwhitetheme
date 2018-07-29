@@ -104,6 +104,10 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
       }
     }, 1000)
   }
+  //authentication
+  $scope.auth = (auth) => {
+    task.signUp();
+  }
   $timeout(() => {
     //check sticky navigation bar
     task.stickyNavigation();
@@ -360,6 +364,9 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
   }
   this.showSamples = () => {
     $('#sampleWork').toggleClass('showSamples');
+  }
+  this.signUp = () => {
+    window.location = 'http://localhost:3000/signinpage';
   }
 });
 
