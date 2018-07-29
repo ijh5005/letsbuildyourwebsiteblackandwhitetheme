@@ -8,11 +8,6 @@ const path = require('path');
 const routes = require('./routing/routes')
 const authentication = require('./routing/authentication');
 
-//twilio
-const accountSid = 'AC93d2af277ae58e64e46168894dcf38a1';
-const authToken = '609fcb7194cd0923ad64d13e0f22107c';
-const client = require('twilio')(accountSid, authToken);
-
 //middleware
 app.use(express.static(__dirname + '/view'));
 // parse application/x-www-form-urlencoded

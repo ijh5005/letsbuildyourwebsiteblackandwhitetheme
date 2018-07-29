@@ -321,7 +321,8 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
   }
   //send text message
   this.sendText = () => {
-    const url = 'http://letsbuildyourwebsite.com/sendText';
+    const uri = window.location.href;
+    const url = `${uri}sendText`;
     const name = document.getElementById('name').value;
     const contact = document.getElementById('contact').value;
     const message = document.getElementById('message').value;
@@ -366,7 +367,8 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
     $('#sampleWork').toggleClass('showSamples');
   }
   this.signUp = () => {
-    window.location = 'http://letsbuildyourwebsite.com/signinpage';
+    const uri = window.location.href;
+    window.location = `${uri}signinpage`;
   }
 });
 
