@@ -338,8 +338,8 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
         document.getElementById('contact').value = '';
         document.getElementById('message').value = 'Your message has been sent. Thank you';
         console.log('message sent');
-      }, function errorCallback(response) {
-        console.log('message not sent');
+      }, function errorCallback(err) {
+        console.log(err);
       });
   }
   //hide the video box
