@@ -393,29 +393,18 @@ app.service('data', function($rootScope, $interval, $timeout){
       costPage: [
         {
           icons: [
-            { service: 'Website Page',      icon: 'fas fa-book-open'    , cost: '$60', sub: 'each',   description: 'Each page (ex: home page, about page) will cost $60 each and includes a custom design. All content (ex: text, images, videos) you provide me with will be added.' },
-            { service: 'Dashboard',         icon: 'fas fa-wrench'       , cost: '$20', sub: '/month', description: 'Edit content on your website from the dashboard. Which includes text, images, and products' },
-            { service: 'Transaction Setup', icon: 'fas fa-credit-card'  , cost: '$80', sub: '',       description: 'Earn money. This service includes a shopping cart page so you can sell you products. Also, a third party payment service is linked directly to your bank card.' },
-            { service: 'Athentication',     icon: 'fas fa-sign-in-alt'  , cost: '$50', sub: '',       description: 'Have a user sign in to your website optionally. This helps build a personal relationship with your customers and speeds the checkout process' },
-            { service: 'Animations',        icon: 'fas fa-fighter-jet'  , cost: '$50', sub: '',       description: 'Includes custom animations to help your website stand out and build a smooth customer experience.' },
-            { service: 'Email Application',        icon: 'fas fa-at'           , cost: '$50', sub: '',       description: 'Email your customers this week\'s promotions. This includes a reusable email template ready to send to all customers.' },
-            { service: 'Text Application',         icon: 'fas fa-mobile'       , cost: '$50', sub: '',       description: 'Text your customers appointment reminders. Texting has become a primary source of communication.' },
-            { service: 'Contact Form',      icon: 'fas fa-phone'        , cost: '$25', sub: '',       description: 'This form is a convenient way for customers to contact you.' }
+            { service: 'Website Page',      icon: 'fas fa-book-open'    , cost: '$60',  sub: 'each',   description: 'Each page (ex: home page, about page) will cost $60 each and includes a custom design. All content (ex: text, images, videos) you provide me with will be added.' },
+            { service: 'Transaction Setup', icon: 'fas fa-credit-card'  , cost: '$150', sub: '',       description: 'Earn money. This service includes a shopping cart page so you can sell you products. Also, a third party payment service is linked directly to your bank card.' },
+            { service: 'Athentication',     icon: 'fas fa-sign-in-alt'  , cost: '$50',  sub: '',       description: 'Have a user sign in to your website optionally. This helps build a personal relationship with your customers and speeds the checkout process' },
+            { service: 'Animations',        icon: 'fas fa-fighter-jet'  , cost: '$50',  sub: '',       description: 'Includes custom animations to help your website stand out and build a smooth customer experience.' },
+            { service: 'Email Application', icon: 'fas fa-at'           , cost: '$50',  sub: '',       description: 'Email your customers this week\'s promotions. This includes a reusable email template ready to send to all customers.' },
+            { service: 'Text Application',  icon: 'fas fa-mobile'       , cost: '$50',  sub: '',       description: 'Text your customers appointment reminders. Texting has become a primary source of communication.' },
+            { service: 'Contact Form',      icon: 'fas fa-phone'        , cost: '$25',  sub: '',       description: 'This form is a convenient way for customers to contact you.' },
+            { service: 'maintenance',       icon: 'fas fa-wrench'       , cost: '$25',  sub: '/hour',  description: 'After your website is complete I can edit content after the free maintenance window closes.' }
           ]
         }
-      ],
-      maintenance: [
-        {
-          heading: 'DASHBOARD',
-          body: '- $20/month - Change your website content at the click of a button with the dashboard.'
-        },
-        {
-          heading: 'HIRE ME!',
-          body: '- $25/hour - Don\'t have the time to maintain your website? I can do it for you.'
-        },
       ]
-    },
-
+    }
   };
   //navigation options
   this.navigation = [
