@@ -147,8 +147,8 @@ textarea:focus {
   background-color: var(--red);
   color: #fff;
   user-select: none;
-  border-bottom-left-radius: 100% 60px;
-  border-bottom-right-radius: 100% 60px;
+  border-bottom-left-radius: 100% 30px;
+  border-bottom-right-radius: 100% 30px;
 }
 
 .pageRedBar p {
