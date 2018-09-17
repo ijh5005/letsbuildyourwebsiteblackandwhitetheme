@@ -498,18 +498,18 @@ textarea:focus {
 #sampleWork {
   background: rgb(0,0,0);
   background: linear-gradient(90deg, rgba(0,0,0,1) 25%, rgba(20,20,20,1) 77%);
-  height: 52em;
   position: absolute;
   right: -100%;
   top: 8%;
-  width: 84em;
   z-index: 10;
+  padding: 1em;
+  max-height: 86vh;
+  overflow-y: scroll;
 }
 
 #logoBar,
 #videoSection {
   justify-content: flex-start;
-  padding-left: 4em;
 }
 
 #logo {
@@ -533,6 +533,7 @@ textarea:focus {
 
 #videoPlayerListSection {
   overflow: scroll;
+  width: 100%;
 }
 
 #videoPlayerListSection::-webkit-scrollbar {
@@ -541,7 +542,7 @@ textarea:focus {
 }
 
 .videoSelection {
-  background-color: #444;
+  background-color: #222;
   background-position: left;
   background-repeat: no-repeat;
   background-size: auto 100%;
@@ -556,7 +557,7 @@ textarea:focus {
 .videoDescriptionBar {
   align-items: flex-start;
   background-color: #000;
-  bottom: -10%;
+  bottom: -6%;
   color: #fff;
   justify-content: flex-start;
   opacity: 0.9;
@@ -589,4 +590,16 @@ textarea:focus {
 
 #homeTextPlayBtnSmallScreen {
   z-index: 4;
+}
+
+iframe {
+  height: 15em;
+  width: 22em;
+  position: absolute;
+  left: 0;
+}
+
+iframe.selectedVideo {
+  height: 28em;
+  width: 44em;
 }

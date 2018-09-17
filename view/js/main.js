@@ -128,7 +128,18 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
   //display the video for the sample works
   this.clickSampleBox = (scope, index) => {
     //request the youtube video
-    $('#homeVideoBox').attr('src', scope.fixUrl(data['homeTechData'][index]['video']));
+    // $('#homeVideoBox').attr('src', scope.fixUrl(data['homeTechData'][index]['video']));
+    $('.videoDescriptionBar').removeClass('selectedVideo').removeClass('none');
+    $('.videoSelection > iframe').addClass('none');
+    $('.videoSelection').removeClass('selectedVideo');
+    $(`.videoSelection[data="${index}"]`).addClass('selectedVideo');
+    $('.videoSelection.selectedVideo > .videoDescriptionBar').addClass('selectedVideo');
+    $('iframe.selectedVideo').attr('src', '');
+    $timeout(() => {
+      $(`.videoSelection.selectedVideo > iframe`).removeClass('none').addClass('selectedVideo');
+      $('.videoSelection.selectedVideo > .videoDescriptionBar').addClass('none');
+      $('iframe.selectedVideo').attr('src', scope.fixUrl(data['homeTechData'][index]['video']));
+    }, 300);
   }
   //set the page content
   this.setPageContent = () => {

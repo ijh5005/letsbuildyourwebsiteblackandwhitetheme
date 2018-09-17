@@ -12,7 +12,8 @@
 #techHomePage,
 .pageNumber,
 #techBarContainer,
-#homeText p {
+#homeText p,
+.videoSelection {
   transition: all 0.5s;
 }
 
@@ -153,4 +154,14 @@
 
 .playBtn i {
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.videoSelection.selectedVideo {
+  height: 28em;
+  width: 44em;
+  background-image: url('') !important;
+}
+
+.videoSelection.selectedVideo > .videoDescriptionBar {
+  display: none;
 }

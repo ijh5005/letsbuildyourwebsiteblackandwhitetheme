@@ -293,15 +293,7 @@
       </div>
 
       <div id="sampleWork" class="" ng-if='currentPage === "homePageLocation"'>
-        <div id="logoBar" class="flexRow h20 fullWidth">
-          <div id="logo" class="">
-            <p>LBYW</p>
-          </div>
-        </div>
         <div id="videoSection" class="flexRow h75 fullWidth">
-          <div id="playingVideoSection" class="h80 w65">
-            <iframe id="homeVideoBox" width="100%" height="100%" src='' frameborder="0" allowfullscreen></iframe>
-          </div>
           <div id="videoPlayerListSection" class="h80 w35">
             <div data={{$index}} style={{sampleImg.img}} class="flexRow videoSelection" ng-repeat='sampleImg in homeTechBarData track by $index' ng-click='clickSampleBox($index)'>
               <div class="playBtn">
@@ -310,10 +302,10 @@
               <div class="videoDescriptionBar flexRow h20 fullWidth">
                 <p>{{sampleImg.name}}</p>
               </div>
+              <iframe id="homeVideoBox" class="none" src='' frameborder="0" allowfullscreen></iframe>
             </div>
           </div>
         </div>
-        <p id="videoBottomText">Lets Build Your Website</p>
       </div>
 
       <div id="homeTextPlayBtnSmallScreen" class="playBtn smallScreenPlayBtn" ng-click='showSampleWork()'>
