@@ -502,7 +502,6 @@ textarea:focus {
   right: -100%;
   top: 8%;
   z-index: 10;
-  padding: 1em;
   max-height: 86vh;
   overflow-y: scroll;
 }
