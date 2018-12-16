@@ -421,7 +421,7 @@ app.service('data', function($rootScope, $interval, $timeout) {
           {
             service: 'Transaction Setup',
             icon: 'fas fa-credit-card',
-            cost: '$500',
+            cost: '$600',
             sub: '',
             description: 'Earn money. This service includes a shopping cart page so you can sell you products. Also, a third party payment service is linked directly to your bank card.'
           },
