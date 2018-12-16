@@ -3,7 +3,7 @@ console.log('built by Isaiah Harrison');
 
 var app = angular.module('app', []);
 
-app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task', 'data', function($scope, $rootScope, $interval, $timeout, task, data){
+app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task', 'data', function($scope, $rootScope, $interval, $timeout, task, data) {
   //data for the page
   $rootScope.data;
   //the current page
@@ -43,7 +43,9 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   //tech page contact method
   $scope.hoverTechPageCostIcon = (index) => {
     const scrollPosition = $(`#costPage div[data="${index}"`).position().top - 60;
-    $("body, html").animate({ scrollTop: scrollPosition }, 250);
+    $("body, html").animate({
+      scrollTop: scrollPosition
+    }, 250);
     $(`.techCostPage i[data="${index}"]`).addClass('opacity1');
     $(`.pricingBox[data="${index}"] div.shortDescription`).addClass('hoverShortDescription');
     $(`.pricingBox[data="${index}"] div.longDescription`).addClass('hoverLongDescription');
@@ -80,7 +82,7 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   }
   //show sample work
   $scope.showSampleWork = (delayClick) => {
-    if(delayClick) {
+    if (delayClick) {
       $timeout(() => {
         $rootScope.samplesOpen = true;
         task.showSamples();
@@ -94,7 +96,7 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   task.setScrollSpeed();
   $scope.startBounce = () => {
     const bounce = $interval(() => {
-      if(!$rootScope.samplesOpen){
+      if (!$rootScope.samplesOpen) {
         $('#homeTextPlayBtn').toggleClass('bounce');
         $('#homeTextPlayBtn').toggleClass('animated');
         $('#homeTextPlayBtnSmallScreen').toggleClass('bounce');
@@ -124,7 +126,7 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
 }]);
 
 
-app.service('task', function($rootScope, $interval, $timeout, $http, data){
+app.service('task', function($rootScope, $interval, $timeout, $http, data) {
   //display the video for the sample works
   this.clickSampleBox = (scope, index) => {
     //request the youtube video
@@ -181,44 +183,46 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
   };
   //set different scroll speeds
   this.setScrollSpeed = () => {
-    $.fn.moveIt = function(){
+    $.fn.moveIt = function() {
       var $window = $(window);
       var instances = [];
 
-      $(this).each(function(){
+      $(this).each(function() {
         instances.push(new moveItItem($(this)));
       });
 
-      window.addEventListener('scroll', function(){
+      window.addEventListener('scroll', function() {
         var scrollTop = $window.scrollTop();
-        instances.forEach(function(inst){
+        instances.forEach(function(inst) {
           inst.update(scrollTop);
         });
-      }, {passive: true});
+      }, {
+        passive: true
+      });
     }
 
-    var moveItItem = function(el){
+    var moveItItem = function(el) {
       this.el = $(el);
       this.speed = parseInt(this.el.attr('data-scroll-speed'));
     };
 
-    moveItItem.prototype.update = function(scrollTop){
+    moveItItem.prototype.update = function(scrollTop) {
       this.el.css('transform', 'translateY(' + -(scrollTop / this.speed) + 'px)');
     };
 
     // Initialization
-    $(function(){
+    $(function() {
       $('[data-scroll-speed]').moveIt();
     });
   }
   //set posiions of nav elements on UI
   this.setNavPointPositions = () => {
     $rootScope.position = {
-      navPosition         : $('#navBar').position().top,
-      homePageLocation    : $('#homePageLocation').position().top,
-      servicePageLocation : $('#servicePageLocation').position().top,
-      costPageLocation    : $('#costPageLocation').position().top,
-      contactPageLocation : $('#contactPageLocation').position().top
+      navPosition: $('#navBar').position().top,
+      homePageLocation: $('#homePageLocation').position().top,
+      servicePageLocation: $('#servicePageLocation').position().top,
+      costPageLocation: $('#costPageLocation').position().top,
+      contactPageLocation: $('#contactPageLocation').position().top
     }
   }
   //position the navigation at the top of the UI
@@ -246,13 +250,13 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
     let currentPage;
     let yOffset = 10;
     const currentPosition = $('content').prevObject["0"].scrollingElement.scrollTop;
-    if(currentPosition >= $rootScope.position.contactPageLocation - yOffset){
+    if (currentPosition >= $rootScope.position.contactPageLocation - yOffset) {
       currentPage = 'contactPageLocation';
-    } else if(currentPosition >= $rootScope.position.costPageLocation - yOffset){
+    } else if (currentPosition >= $rootScope.position.costPageLocation - yOffset) {
       currentPage = 'costPageLocation';
-    } else if((currentPosition >= $rootScope.position.servicePageLocation - yOffset) || (currentPosition >= $rootScope.position.navPosition)){
+    } else if ((currentPosition >= $rootScope.position.servicePageLocation - yOffset) || (currentPosition >= $rootScope.position.navPosition)) {
       currentPage = 'servicePageLocation';
-    } else if(currentPosition >= $rootScope.position.homePageLocation - yOffset){
+    } else if (currentPosition >= $rootScope.position.homePageLocation - yOffset) {
       currentPage = 'homePageLocation';
     }
     return currentPage;
@@ -263,7 +267,7 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
     $(window).resize(this.setNavPointPositions);
     $(window).scroll(() => {
       const currentPage = this.indentifyCurrentPage();
-      (currentPage === 'homePageLocation') ? this.showNavigationAtBottom() : this.showNavigationAtTop();
+      (currentPage === 'homePageLocation') ? this.showNavigationAtBottom(): this.showNavigationAtTop();
       this.setCurrentPage(currentPage);
       this.techBarAnimationOnPage(currentPage);
       this.addNavPageHighlight(currentPage);
@@ -280,7 +284,9 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
   //navigation click
   this.goTo = (pageLocation) => {
     const position = $(`#${pageLocation}`).position().top;
-    $("body, html").animate({ scrollTop: position }, $rootScope.pageScrollTime);
+    $("body, html").animate({
+      scrollTop: position
+    }, $rootScope.pageScrollTime);
   }
 
   //home page tech bar animation
@@ -292,9 +298,9 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
     $('#serviceText').fadeIn('slow');
   }
   //cost page tech bar animation
-  this.techBarCostAnimation  = () => {
+  this.techBarCostAnimation = () => {
     const $icons = document.querySelectorAll('.techCost i');
-    for(let i = 0; i < $icons.length; i++){
+    for (let i = 0; i < $icons.length; i++) {
       const timeout = i * 50;
       $timeout(() => {
         $(`.techCost i[data="${i}"]`).css('transform', 'scale(1)');
@@ -310,7 +316,7 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
   this.findIndexOfCurrentPage = () => {
     let currentPageIndex;
     data.navigation.map((data, index) => {
-      if(data.pageLocation === $rootScope.currentPage){
+      if (data.pageLocation === $rootScope.currentPage) {
         currentPageIndex = index;
       }
     })
@@ -319,14 +325,14 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
   //go up one page
   this.goUp = () => {
     const indexToGoTo = this.findIndexOfCurrentPage() - 1;
-    if(indexToGoTo >= 0){
+    if (indexToGoTo >= 0) {
       this.goTo(data['navigation'][indexToGoTo]['pageLocation']);
     }
   }
   //go down one page
   this.goDown = () => {
     const indexToGoTo = this.findIndexOfCurrentPage() + 1;
-    if(indexToGoTo < data['navigation'].length){
+    if (indexToGoTo < data['navigation'].length) {
       this.goTo(data['navigation'][indexToGoTo]['pageLocation']);
     }
   }
@@ -338,20 +344,24 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
     const contact = document.getElementById('contact').value;
     const message = document.getElementById('message').value;
     const textMessage = `Hi, my name is ${name}. You can reach me at ${contact}, Message: ${message}`;
-    const data = { message: textMessage };
+    const data = {
+      message: textMessage
+    };
     $http({
       method: 'POST',
       url: url,
       data: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json'
+      }
     }).then(function successCallback(response) {
-        document.getElementById('name').value = '';
-        document.getElementById('contact').value = '';
-        document.getElementById('message').value = 'Your message has been sent. Thank you';
-        console.log('message sent');
-      }, function errorCallback(err) {
-        console.log(err);
-      });
+      document.getElementById('name').value = '';
+      document.getElementById('contact').value = '';
+      document.getElementById('message').value = 'Your message has been sent. Thank you';
+      console.log('message sent');
+    }, function errorCallback(err) {
+      console.log(err);
+    });
   }
   //hide the video box
   this.hideSampleWork = () => {
@@ -369,7 +379,7 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
       url: url,
       method: 'POST',
       data: data,
-      success: function (data) {
+      success: function(data) {
         console.log(data)
       }
     })
@@ -383,12 +393,11 @@ app.service('task', function($rootScope, $interval, $timeout, $http, data){
   }
 });
 
-app.service('data', function($rootScope, $interval, $timeout){
+app.service('data', function($rootScope, $interval, $timeout) {
   //set the page content
   this.pageContent = {
     page: {
-      servicePage: [
-        {
+      servicePage: [{
           heading: 'MULTI-DEVICE',
           body: 'You will have a website that looks amazing on any device whether it\'s by phone, tablet, desktop, or even television.'
         },
@@ -401,32 +410,99 @@ app.service('data', function($rootScope, $interval, $timeout){
           body: 'Websites can cost thousands. No fear, I\'m here, with affordable prices. Check out the pricing table below for details.'
         }
       ],
-      costPage: [
-        {
-          icons: [
-            { service: 'Website Page',      icon: 'fas fa-book-open'    , cost: '$60',  sub: 'each',   description: 'Each page (ex: home page, about page) will cost $60 each and includes a custom design. All content (ex: text, images, videos) you provide me with will be added.' },
-            { service: 'Transaction Setup', icon: 'fas fa-credit-card'  , cost: '$150', sub: '',       description: 'Earn money. This service includes a shopping cart page so you can sell you products. Also, a third party payment service is linked directly to your bank card.' },
-            { service: 'Athentication',     icon: 'fas fa-sign-in-alt'  , cost: '$50',  sub: '',       description: 'Have a user sign in to your website optionally. This helps build a personal relationship with your customers and speeds the checkout process' },
-            { service: 'Animations',        icon: 'fas fa-fighter-jet'  , cost: '$50',  sub: '',       description: 'Includes custom animations to help your website stand out and build a smooth customer experience.' },
-            { service: 'Email Application', icon: 'fas fa-at'           , cost: '$50',  sub: '',       description: 'Email your customers this week\'s promotions. This includes a reusable email template ready to send to all customers.' },
-            { service: 'Text Application',  icon: 'fas fa-mobile'       , cost: '$50',  sub: '',       description: 'Text your customers appointment reminders. Texting has become a primary source of communication.' },
-            { service: 'Contact Form',      icon: 'fas fa-phone'        , cost: '$25',  sub: '',       description: 'This form is a convenient way for customers to contact you.' },
-            { service: 'maintenance',       icon: 'fas fa-wrench'       , cost: '$25',  sub: '/hour',  description: 'After your website is complete I can edit content after the free maintenance window closes.' }
-          ]
-        }
-      ]
+      costPage: [{
+        icons: [{
+            service: 'Website Page',
+            icon: 'fas fa-book-open',
+            cost: '$60',
+            sub: 'each',
+            description: 'Each page (ex: home page, about page) will cost $60 each and includes a custom design. All content (ex: text, images, videos) you provide me with will be added.'
+          },
+          {
+            service: 'Transaction Setup',
+            icon: 'fas fa-credit-card',
+            cost: '$500',
+            sub: '',
+            description: 'Earn money. This service includes a shopping cart page so you can sell you products. Also, a third party payment service is linked directly to your bank card.'
+          },
+          {
+            service: 'Athentication',
+            icon: 'fas fa-sign-in-alt',
+            cost: '$50',
+            sub: '',
+            description: 'Have a user sign in to your website optionally. This helps build a personal relationship with your customers and speeds the checkout process'
+          },
+          {
+            service: 'Animations',
+            icon: 'fas fa-fighter-jet',
+            cost: '$50',
+            sub: '',
+            description: 'Includes custom animations to help your website stand out and build a smooth customer experience.'
+          },
+          {
+            service: 'Email Application',
+            icon: 'fas fa-at',
+            cost: '$50',
+            sub: '',
+            description: 'Email your customers this week\'s promotions. This includes a reusable email template ready to send to all customers.'
+          },
+          {
+            service: 'Text Application',
+            icon: 'fas fa-mobile',
+            cost: '$50',
+            sub: '',
+            description: 'Text your customers appointment reminders. Texting has become a primary source of communication.'
+          },
+          {
+            service: 'Contact Form',
+            icon: 'fas fa-phone',
+            cost: '$25',
+            sub: '',
+            description: 'This form is a convenient way for customers to contact you.'
+          },
+          {
+            service: 'maintenance',
+            icon: 'fas fa-wrench',
+            cost: '$25',
+            sub: '/hour',
+            description: 'After your website is complete I can edit content after the free maintenance window closes.'
+          }
+        ]
+      }]
     }
   };
   //navigation options
-  this.navigation = [
-    { navBarName: 'HOME',     pageLocation: 'homePageLocation',    animation: 'techBarHomeAnimation' },
-    { navBarName: 'SERVICES', pageLocation: 'servicePageLocation', animation: 'techBarServiceAnimation' },
-    { navBarName: 'COST',     pageLocation: 'costPageLocation',    animation: 'techBarCostAnimation' },
-    { navBarName: 'CONTACT',  pageLocation: 'contactPageLocation', animation: 'techBarContactAnimation' }
+  this.navigation = [{
+      navBarName: 'HOME',
+      pageLocation: 'homePageLocation',
+      animation: 'techBarHomeAnimation'
+    },
+    {
+      navBarName: 'SERVICES',
+      pageLocation: 'servicePageLocation',
+      animation: 'techBarServiceAnimation'
+    },
+    {
+      navBarName: 'COST',
+      pageLocation: 'costPageLocation',
+      animation: 'techBarCostAnimation'
+    },
+    {
+      navBarName: 'CONTACT',
+      pageLocation: 'contactPageLocation',
+      animation: 'techBarContactAnimation'
+    }
   ];
   //home tech bar info
-  this.homeTechData = [
-    { name:'West Phillie Produce', img: 'background-image: url(./img/WPP.png)', video: 'https://www.youtube.com/embed/8eOD_x1Z59E' },
-    { name:'No Baggage Records',   img: 'background-image: url(./img/NBR.png)', video: 'https://www.youtube.com/embed/YKzIogzt8-o' }
+  this.homeTechData = [{
+      name: 'West Phillie Produce',
+      img: 'background-image: url(./img/WPP.png)',
+      video: 'https://www.youtube.com/embed/8eOD_x1Z59E'
+    },
+    {
+      name: 'No Baggage Records',
+      img: 'background-image: url(./img/NBR.png)',
+      video: 'https://www.youtube.com/embed/YKzIogzt8-o'
+    }
   ]
 });
