@@ -18,6 +18,8 @@ app.controller('ctrl', ['$scope', '$rootScope', '$interval', '$timeout', 'task',
   $rootScope.samplesOpen = false;
   //used to reset the home page video box position
   $rootScope.resetHomeVideoScreenPosition;
+  //year for the Copyright
+  $rootScope.year = new Date;
   //prepare the url to be compatible with youtube
   $scope.fixUrl = (url) => {
     return url.replace('watch?v=', 'embed/') + '?rel=0&mute=1&controls=0';
