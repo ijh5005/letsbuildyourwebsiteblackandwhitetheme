@@ -297,6 +297,8 @@ textarea:focus {
   font-size: 4em;
   opacity: 0.8;
   font-weight: bolder;
+  text-align: center;
+  max-width: 80vw;
 }
 
 #slogan {
