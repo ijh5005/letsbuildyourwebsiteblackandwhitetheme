@@ -299,6 +299,7 @@ textarea:focus {
   font-weight: bolder;
   text-align: center;
   max-width: 80vw;
+  line-height: 1;
 }
 
 #slogan {
@@ -330,10 +331,6 @@ textarea:focus {
 #contactInformationSection a p {
   letter-spacing: 2px;
   margin: 0;
-}
-
-#contactInformationSection {
-  width: 20em;
 }
 
 #formSection {
