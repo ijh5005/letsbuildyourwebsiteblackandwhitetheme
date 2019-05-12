@@ -293,6 +293,12 @@ textarea:focus {
   text-transform: uppercase;
 }
 
+.callortext {
+  font-size: 4em;
+  opacity: 0.8;
+  font-weight: bolder;
+}
+
 #slogan {
   margin-top: 0;
 }
