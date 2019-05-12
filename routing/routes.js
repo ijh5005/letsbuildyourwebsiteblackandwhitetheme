@@ -6,8 +6,6 @@ const keyConfig = require('../config/keyConfig');
 const Auth = require('../model/auth');
 const util = require('../util/util');
 
-const fs = require('fs');
-
 //twilio
 //account info
 const accountSid = 'AC93d2af277ae58e64e46168894dcf38a1';
@@ -31,16 +29,8 @@ router.post('/sendText', (req, res, next) => {
         .then(message => {
           console.log(message.sid);
           res.status(200).send();
-          fs.writeFile('message.txt', message, (err) => {
-            if (err) throw err;
-            console.log('The file has been saved!');
-          });
         })
         .catch(err => {
-          fs.writeFile('message.txt', message, (err) => {
-            if (err) throw err;
-            console.log('The file has been saved!');
-          });
           res.json(err)
         })
         .done();
